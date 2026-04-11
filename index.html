@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeFlash — Developer Flashcards That Stick</title>
+<meta name="description" content="80 interactive flashcard packs with real code examples. Open in your browser, study offline, print for your desk. No app needed.">
+<meta property="og:title" content="CodeFlash — Developer Flashcards That Stick">
+<meta property="og:description" content="80 interactive flashcard packs. 1,600 cards. 30 topics. Real code. Works offline.">
+<meta property="og:image" content="https://blaquekaktus.github.io/flashcards-programming-app/assets/banners/codeflash_banner_1600x300.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://blaquekaktus.github.io/flashcards-programming-app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CodeFlash — Developer Flashcards That Stick">
+<meta name="twitter:description" content="80 flashcard packs. 1,600 cards. Real code. Works offline.">
+<meta name="twitter:image" content="https://blaquekaktus.github.io/flashcards-programming-app/assets/banners/codeflash_banner_1600x300.png">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/logos/codeflash_logo_256.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/logos/codeflash_favicon_64.png">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0D11;--surface:#13161E;--surface2:#1A1E28;--border:#252A36;--text:#E8E6E1;--muted:#8B8D95;--dim:#5A5C64;--accent:#5BF0A5;--accent2:#3DD68C;--accent-dim:#5BF0A520;--blue:#5B9DF0;--warn:#F0C05B;--pink:#F05B8D;--purple:#A05BF0;--font:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;width:100%;background:rgba(11,13,17,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;padding:.75rem 2rem;display:flex;justify-content:space-between;align-items:center}.nav-logo{font-weight:700;font-size:1.1rem;letter-spacing:-.02em}.nav-logo span{color:var(--accent)}.nav-links{display:flex;gap:1.5rem;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s}.nav-links a:hover{color:var(--text)}.nav-cta{background:var(--accent)!important;color:var(--bg)!important;padding:.4rem 1rem;border-radius:6px;font-weight:600;font-size:.8rem}.hamburger{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+section{max-width:1000px;margin:0 auto;padding:0 2rem}.section-label{font-family:var(--mono);font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.75rem}
+.hero{padding:8rem 2rem 4rem;text-align:center;max-width:1000px;margin:0 auto}.hero h1{font-size:3.2rem;font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem}.hero h1 span{color:var(--accent)}.hero .sub{color:var(--muted);font-size:1.1rem;max-width:520px;margin:0 auto 2rem;line-height:1.6}.hero-cta{display:inline-flex;gap:1rem;flex-wrap:wrap;justify-content:center}.btn{display:inline-block;padding:.75rem 2rem;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .2s;border:none;cursor:pointer}.btn-primary{background:var(--accent);color:var(--bg)}.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}.btn-free{background:transparent;color:var(--accent);border:1px solid var(--accent)}.btn-free:hover{background:var(--accent);color:var(--bg)}
+.stats{display:flex;justify-content:center;gap:3rem;margin:3rem 0;flex-wrap:wrap}.stat{text-align:center}.stat-val{font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--accent)}.stat-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem}
+.free-cta{text-align:center;margin:2.5rem auto 1rem;padding:2rem;background:var(--surface);border:1px solid rgba(91,240,165,.2);border-radius:14px;max-width:600px}.free-cta h3{font-size:1rem;font-weight:600;margin-bottom:.4rem}.free-cta p{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.personas{padding:4rem 0}.persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}.persona{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem}.persona-icon{font-size:1.5rem;margin-bottom:.75rem}.persona h3{font-size:.95rem;font-weight:600;margin-bottom:.4rem}.persona p{font-size:.82rem;color:var(--muted);line-height:1.5}.persona .highlight{font-family:var(--mono);font-size:.7rem;color:var(--accent);margin-top:.75rem}
+.how{padding:5rem 0}.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}.how-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem}.how-num{font-family:var(--mono);font-size:.7rem;font-weight:700;background:var(--accent);color:var(--bg);width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}.how-card h3{font-size:1rem;font-weight:600;margin-bottom:.5rem}.how-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.features{padding:4rem 0}.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem}.feat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem}.feat h3{font-size:.9rem;font-weight:600;margin-bottom:.4rem}.feat h3::before{content:'';display:inline-block;width:8px;height:8px;background:var(--accent);border-radius:2px;margin-right:.5rem;vertical-align:middle}.feat p{font-size:.82rem;color:var(--muted)}
+.topics{padding:4rem 0}.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.5rem;margin-top:1.5rem}.topic-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:.82rem;cursor:pointer;transition:border-color .2s}.topic-item:hover{border-color:var(--accent)}.topic-head{display:flex;justify-content:space-between;align-items:center;padding:.7rem .9rem}.topic-head .count{font-family:var(--mono);font-size:.7rem;color:var(--accent)}.topic-head::after{content:'+';font-family:var(--mono);font-size:.9rem;color:var(--dim);margin-left:.5rem}.topic-item.open .topic-head::after{content:'−'}.topic-packs{display:none;padding:0 .9rem .7rem;font-size:.75rem;color:var(--muted);line-height:1.8}.topic-item.open .topic-packs{display:block}.topic-packs span{display:block;padding-left:.75rem;border-left:2px solid var(--border)}
+.demo{padding:4rem 0;text-align:center}.demo-frame{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:2rem;max-width:700px;margin-left:auto;margin-right:auto}.demo-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:1rem;text-align:left;cursor:pointer;transition:border-color .2s;position:relative}.demo-card:hover{border-color:var(--accent)}.demo-tag{font-family:var(--mono);font-size:.6rem;background:var(--accent-dim);color:var(--accent);padding:.2em .5em;border-radius:4px;position:absolute;top:.75rem;right:.75rem}.demo-q{font-weight:500;font-size:.95rem;padding-right:3rem}.demo-a{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted)}.demo-code{font-family:var(--mono);font-size:.75rem;background:var(--bg);padding:.75rem;border-radius:6px;margin-top:.75rem;color:var(--accent2);overflow-x:auto;white-space:pre}.demo-card.open .demo-a{display:block}.demo-card::after{content:'tap to flip';font-family:var(--mono);font-size:.6rem;color:var(--dim);position:absolute;bottom:.6rem;right:.75rem}.demo-card.open::after{content:''}.demo-hint{font-size:.75rem;color:var(--dim);margin-top:1rem}
+.pricing{padding:5rem 0}.pricing>h2{text-align:center;font-size:1.6rem;font-weight:700;margin-bottom:.5rem}.pricing>.sub{text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:2.5rem}
+.bundle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:2rem}.bundle-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative;transition:border-color .2s}.bundle-card:hover{border-color:var(--accent)}.bundle-card.featured{border-color:var(--accent)}.bundle-badge{position:absolute;top:-10px;right:16px;font-family:var(--mono);font-size:.6rem;background:var(--accent);color:var(--bg);padding:.2em .7em;border-radius:4px;font-weight:700}.bundle-name{font-size:1rem;font-weight:600;margin-bottom:.2rem}.bundle-price{font-family:var(--mono);font-size:1.6rem;font-weight:700;color:var(--accent);margin-bottom:.4rem}.bundle-price small{font-size:.75rem;color:var(--muted);font-weight:400}.bundle-desc{font-size:.78rem;color:var(--muted);margin-bottom:.75rem;line-height:1.5}.bundle-meta{font-family:var(--mono);font-size:.65rem;color:var(--dim)}.bundle-btn{display:block;text-align:center;margin-top:1rem;padding:.55rem;border-radius:8px;font-weight:600;font-size:.8rem;text-decoration:none;transition:all .2s}.bundle-btn-primary{background:var(--accent);color:var(--bg)}.bundle-btn-ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.faq{padding:4rem 0}.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0;cursor:pointer}.faq-q{font-weight:500;font-size:.95rem;display:flex;justify-content:space-between;align-items:center}.faq-q::after{content:'+';font-family:var(--mono);color:var(--accent);font-size:1.2rem}.faq-item.open .faq-q::after{content:'−'}.faq-a{display:none;padding-top:.75rem;font-size:.85rem;color:var(--muted);line-height:1.7}.faq-item.open .faq-a{display:block}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:.75rem;color:var(--dim);margin-top:4rem}
+@media(max-width:700px){.hero h1{font-size:2rem}.how-grid,.persona-grid{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr}.stats{gap:1.5rem}nav{padding:.75rem 1rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(11,13,17,.97);flex-direction:column;padding:1rem 2rem;gap:1rem;border-bottom:1px solid var(--border)}.nav-links.open{display:flex}.hamburger{display:block}.topic-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-logo">Code<span>Flash</span></div>
+<button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+<div class="nav-links">
+<a href="#features">Features</a>
+<a href="#topics">Topics</a>
+<a href="#demo">Demo</a>
+<a href="#pricing">Pricing</a>
+<a href="#faq">FAQ</a>
+<a href="#pricing" class="nav-cta">Get Started</a>
+</div>
+</nav>
+<div class="hero">
+<h1>Developer flashcards<br>that <span>stick</span></h1>
+<p class="sub">80 interactive flashcard packs with real code examples. Open in your browser, study offline, print for your desk. No app needed.</p>
+<div class="hero-cta">
+<a href="#pricing" class="btn btn-primary">Browse Packs</a>
+<a href="packs/html/html_foundations_pack1.html" class="btn btn-free" download>Download Free Pack</a>
+</div>
+<div class="stats">
+<div class="stat"><div class="stat-val">80</div><div class="stat-label">Packs</div></div>
+<div class="stat"><div class="stat-val">1,600</div><div class="stat-label">Cards</div></div>
+<div class="stat"><div class="stat-val">30</div><div class="stat-label">Topics</div></div>
+<div class="stat"><div class="stat-val">100%</div><div class="stat-label">Offline</div></div>
+</div>
+</div>
+<section class="personas">
+<div class="section-label">Who it's for</div>
+<h2 style="font-size:1.4rem;font-weight:700;">Built for developers at every stage</h2>
+<div class="persona-grid">
+<div class="persona"><div class="persona-icon">&#128300;</div><h3>Security professionals</h3><p>14 packs covering OWASP, pentesting, Active Directory, cloud security, forensics, and incident response. The most comprehensive cybersec flashcard suite available.</p><div class="highlight">14 PACKS / 280 CARDS</div></div>
+<div class="persona"><div class="persona-icon">&#128187;</div><h3>Career switchers</h3><p>Interview prep bundle with DSA, system design, and behavioral frameworks. Plus full-stack coverage from HTML basics to Kubernetes.</p><div class="highlight">INTERVIEW PREP + FULL STACK</div></div>
+<div class="persona"><div class="persona-icon">&#9889;</div><h3>Senior devs filling gaps</h3><p>Picked up Go last month? Switching to Rust? Need a quick refresher on K8s networking? Grab just the packs you need.</p><div class="highlight">30 TOPICS / BUY ONLY WHAT YOU NEED</div></div>
+</div>
+</section>
+<section class="how" id="features">
+<div class="section-label">How it works</div>
+<h2 style="font-size:1.4rem;font-weight:700;">Three steps to mastery</h2>
+<div class="how-grid">
+<div class="how-card"><div class="how-num">1</div><h3>Open in your browser</h3><p>Each pack is a standalone HTML file. No app, no login, no internet required. Works on any device.</p></div>
+<div class="how-card"><div class="how-num">2</div><h3>Flip, study, quiz</h3><p>Click cards to reveal answers with real code examples. Use quiz mode to test yourself. Filter by category.</p></div>
+<div class="how-card"><div class="how-num">3</div><h3>Print for offline</h3><p>Every pack includes a printable PDF — clean 2-column layout perfect for desk reference or commute study.</p></div>
+</div>
+</section>
+<section class="features">
+<div class="section-label">What's inside</div>
+<h2 style="font-size:1.4rem;font-weight:700;">Not your average flashcards</h2>
+<div class="feat-grid">
+<div class="feat"><h3>Real code examples</h3><p>Production-quality snippets with syntax highlighting. Patterns you'll actually use at work.</p></div>
+<div class="feat"><h3>Interactive quiz mode</h3><p>Test yourself with built-in quiz. Track which cards you've mastered and which need practice.</p></div>
+<div class="feat"><h3>Filter by category</h3><p>Tag-based filtering in every pack. Jump to hooks, routing, deployment, auth — whatever you need.</p></div>
+<div class="feat"><h3>Works offline forever</h3><p>Pure HTML + CSS + JS. No server, no API, no tracking. Open the file and study.</p></div>
+<div class="feat"><h3>14-pack security suite</h3><p>The most comprehensive cybersec flashcard collection. OWASP, pentesting, AD, cloud security, forensics, IR.</p></div>
+<div class="feat"><h3>Printable PDFs included</h3><p>Every pack ships with a clean A4 PDF. Two-column layout. Print, fold, carry.</p></div>
+</div>
+</section>
+<section class="topics" id="topics">
+<div class="section-label">30 topics covered</div>
+<h2 style="font-size:1.4rem;font-weight:700;">Find your stack</h2>
+<div class="topic-grid">
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Cybersecurity</span><span class="count">14 packs</span></div><div class="topic-packs"><span>Networking Fundamentals</span><span>Web App Security Pack 1</span><span>Web App Security Pack 2</span><span>Exploitation</span><span>Privilege Escalation</span><span>Active Directory Pack 1</span><span>Active Directory Pack 2</span><span>Cloud Security Pack 1</span><span>Cloud Security Pack 2</span><span>Malware Analysis & Forensics</span><span>Mobile & IoT Security</span><span>OSINT & Passwords</span><span>OWASP Top 10</span><span>Pentesting & Incident Response</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>AWS</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Core Services (EC2, S3, IAM, VPC)</span><span>Advanced (ECS, Lambda, CloudFormation)</span><span>Security & Monitoring</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>React</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Core Concepts & Hooks</span><span>Patterns & Performance</span><span>Server Components & Advanced</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>TypeScript</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Fundamentals & Types</span><span>Generics & Utility Types</span><span>Advanced Patterns</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Next.js</span><span class="count">3 packs</span></div><div class="topic-packs"><span>App Router & Routing</span><span>Data Fetching & Caching</span><span>Deployment & Advanced</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Python</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Core Concepts</span><span>OOP & Data Structures</span><span>Async, Testing & Stdlib</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>JavaScript</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Core Concepts & ES6+</span><span>Async & DOM</span><span>Patterns & Advanced</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Node.js</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Core & Modules</span><span>Express & Middleware</span><span>Streams, Workers & Performance</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>SQL</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Fundamentals & Queries</span><span>Joins, Subqueries & Window Functions</span><span>Optimization & Administration</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Go</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Fundamentals</span><span>Concurrency & Channels</span><span>Standard Library & Testing</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Rust</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Ownership & Fundamentals</span><span>Lifetimes & Traits</span><span>Error Handling & Async</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Java</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Core OOP & Syntax</span><span>Collections & Generics</span><span>Streams, Concurrency & Modern Java</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>PHP</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Fundamentals & Syntax</span><span>OOP & Namespaces</span><span>Modern PHP & Frameworks</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>HTML</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Foundations</span><span>Forms & Advanced</span><span>Accessibility & Modern APIs</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>CSS</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Fundamentals</span><span>Flexbox & Grid</span><span>Modern CSS & Responsive</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Bootstrap</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Grid & Layout</span><span>Components</span><span>Utilities & Customization</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Interview Prep</span><span class="count">3 packs</span></div><div class="topic-packs"><span>Data Structures & Algorithms</span><span>System Design</span><span>Behavioral & Soft Skills</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Docker</span><span class="count">2 packs</span></div><div class="topic-packs"><span>Fundamentals & Images</span><span>Compose & Production</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Kubernetes</span><span class="count">2 packs</span></div><div class="topic-packs"><span>Core Concepts & Pods</span><span>Networking & Scaling</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Tailwind</span><span class="count">2 packs</span></div><div class="topic-packs"><span>Utilities & Layout</span><span>Components & Customization</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Testing</span><span class="count">2 packs</span></div><div class="topic-packs"><span>Unit Testing & TDD</span><span>Integration & E2E</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>React Native</span><span class="count">1 pack</span></div><div class="topic-packs"><span>Core Concepts & Navigation</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Swift / iOS</span><span class="count">1 pack</span></div><div class="topic-packs"><span>SwiftUI & iOS Development</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Kotlin / Android</span><span class="count">1 pack</span></div><div class="topic-packs"><span>Jetpack Compose & Android</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Unity / C#</span><span class="count">1 pack</span></div><div class="topic-packs"><span>Game Dev Essentials</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Godot / GDScript</span><span class="count">1 pack</span></div><div class="topic-packs"><span>Game Dev Essentials</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Linux / SysAdmin</span><span class="count">1 pack</span></div><div class="topic-packs"><span>System Administration</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Git</span><span class="count">1 pack</span></div><div class="topic-packs"><span>Version Control Essentials</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>Data Engineering</span><span class="count">1 pack</span></div><div class="topic-packs"><span>ETL, Spark & dbt</span></div></div>
+<div class="topic-item" onclick="this.classList.toggle('open')"><div class="topic-head"><span>API Design</span><span class="count">1 pack</span></div><div class="topic-packs"><span>REST & GraphQL</span></div></div>
+</div>
+</section>
+<section class="demo" id="demo">
+<div class="section-label">Try it</div>
+<h2 style="font-size:1.4rem;font-weight:700;">See how CodeFlash cards work</h2>
+<p style="color:var(--muted);font-size:.9rem;margin-top:.5rem;">Click any card to flip it</p>
+<div class="demo-frame">
+<div class="demo-card" onclick="this.classList.toggle('open')"><span class="demo-tag">hooks</span><div class="demo-q">What is useState and how do you use it in React?</div><div class="demo-a">useState returns a [value, setter] pair. Call the setter to update state and trigger a re-render. Use functional updates when the new state depends on the previous value.<div class="demo-code">const [count, setCount] = useState(0);
+
+// Direct update
+setCount(5);
+
+// Functional update (depends on prev)
+setCount(prev => prev + 1);</div></div></div>
+<div class="demo-card" onclick="this.classList.toggle('open')"><span class="demo-tag">injection</span><div class="demo-q">What is SQL injection and how do you prevent it?</div><div class="demo-a">Untrusted data sent as part of a SQL query. The attacker can read, modify, or delete data. Always use parameterized queries — never string concatenation.<div class="demo-code"># VULNERABLE
+query = f"SELECT * FROM users WHERE name = '{input}'"
+
+# SAFE — parameterized
+cursor.execute(
+    "SELECT * FROM users WHERE name = %s",
+    (user_input,)
+)</div></div></div>
+<div class="demo-card" onclick="this.classList.toggle('open')"><span class="demo-tag">concurrency</span><div class="demo-q">How do goroutines and channels work in Go?</div><div class="demo-a">Goroutines are lightweight threads launched with the <code>go</code> keyword. Channels are typed conduits for communication between goroutines — they block until both sender and receiver are ready.<div class="demo-code">ch := make(chan string)
+
+go func() {
+    ch <- "hello"  // send
+}()
+
+msg := <-ch  // receive (blocks until sent)
+fmt.Println(msg)</div></div></div>
+<div class="demo-hint">These are 3 of 1,600 cards. Each pack has 20 cards with filtering, quiz mode, and progress tracking.</div>
+</div>
+<div class="free-cta"><h3>Try the full experience</h3><p>Download a complete pack for free — 20 interactive flashcards, quiz mode, filters, and a printable PDF.</p><a href="packs/html/html_foundations_pack1.html" class="btn btn-free" download>Download HTML Foundations (Free)</a></div>
+</section>
+<section class="pricing" id="pricing">
+<div class="section-label">Pricing</div>
+<h2>One purchase, study forever</h2>
+<p class="sub">No subscriptions. No recurring fees. Buy once, keep forever.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;max-width:700px;margin-left:auto;margin-right:auto;">
+<div class="bundle-card" style="text-align:center;padding:2rem;">
+<div class="bundle-name" style="font-size:1.1rem;">All-Access — 1 Year</div>
+<div class="bundle-price" style="font-size:2.2rem;">$99 <small>/year</small></div>
+<div class="bundle-desc">All 80 packs, 1,600 cards, 30 topics. Every new pack released in the next 12 months included.</div>
+<a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Get 1 Year Access</a>
+</div>
+<div class="bundle-card featured" style="text-align:center;padding:2rem;">
+<div class="bundle-badge">BEST VALUE</div>
+<div class="bundle-name" style="font-size:1.1rem;">All-Access — Lifetime</div>
+<div class="bundle-price" style="font-size:2.2rem;">$129 <small>one-time</small></div>
+<div class="bundle-desc">Every pack we make — now and forever. All current packs plus every future pack we ever release.</div>
+<a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-primary">Get Lifetime Access — $129</a>
+</div>
+</div>
+<h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem;">Specialization bundles</h3>
+<div class="bundle-grid">
+<div class="bundle-card"><div class="bundle-name">Front End Engineer</div><div class="bundle-price">$49</div><div class="bundle-desc">HTML, CSS, JavaScript, React, TypeScript, Next.js, Tailwind, and Bootstrap — the complete frontend stack.</div><div class="bundle-meta">23 packs / 460 cards / HTML + PDF</div><a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Get Bundle</a></div>
+<div class="bundle-card"><div class="bundle-name">Security Engineer</div><div class="bundle-price">$39</div><div class="bundle-desc">OWASP, pentesting, AD attacks, cloud security, malware analysis, forensics, IR, OSINT, and more.</div><div class="bundle-meta">14 packs / 280 cards / HTML + PDF</div><a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Get Bundle</a></div>
+<div class="bundle-card"><div class="bundle-name">DevOps Engineer</div><div class="bundle-price">$29</div><div class="bundle-desc">Docker, Kubernetes, AWS, Linux administration, Git workflows, and CI/CD pipeline patterns.</div><div class="bundle-meta">11 packs / 220 cards / HTML + PDF</div><a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Get Bundle</a></div>
+<div class="bundle-card"><div class="bundle-name">Back End Engineer</div><div class="bundle-price">$29</div><div class="bundle-desc">Node.js, Python, SQL, Docker, Testing, and API Design — server-side patterns with real code.</div><div class="bundle-meta">12 packs / 240 cards / HTML + PDF</div><a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Get Bundle</a></div>
+<div class="bundle-card"><div class="bundle-name">Cloud / AWS Architect</div><div class="bundle-price">$24</div><div class="bundle-desc">AWS core services, Docker, Kubernetes, and Linux — CLI commands and architecture patterns.</div><div class="bundle-meta">8 packs / 160 cards / HTML + PDF</div><a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Get Bundle</a></div>
+<div class="bundle-card"><div class="bundle-name">Data Engineer</div><div class="bundle-price">$24</div><div class="bundle-desc">ETL/ELT, Apache Spark, dbt, SQL, Python, and Docker for data pipelines and warehousing.</div><div class="bundle-meta">6 packs / 120 cards / HTML + PDF</div><a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Get Bundle</a></div>
+<div class="bundle-card"><div class="bundle-name">Interview Prep</div><div class="bundle-price">$14</div><div class="bundle-desc">Data structures & algorithms, system design patterns, and behavioral interview frameworks.</div><div class="bundle-meta">3 packs / 60 cards / HTML + PDF</div><a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Get Bundle</a></div>
+<div class="bundle-card"><div class="bundle-name">Mobile Developer</div><div class="bundle-price">$14</div><div class="bundle-desc">React Native, Swift/SwiftUI, and Kotlin/Jetpack Compose — cross-platform and native.</div><div class="bundle-meta">3 packs / 60 cards / HTML + PDF</div><a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Get Bundle</a></div>
+<div class="bundle-card"><div class="bundle-name">Game Developer</div><div class="bundle-price">$10</div><div class="bundle-desc">Unity/C# and Godot/GDScript — GameObjects, signals, physics, animation, AI patterns.</div><div class="bundle-meta">2 packs / 40 cards / HTML + PDF</div><a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Get Bundle</a></div>
+<div class="bundle-card"><div class="bundle-name">Individual Pack</div><div class="bundle-price">$7 <small>each</small></div><div class="bundle-desc">Any single topic — 20 interactive flashcards with code examples + printable PDF.</div><div class="bundle-meta">1 pack / 20 cards / HTML + PDF</div><a href="https://codeflash.lemonsqueezy.com" class="bundle-btn bundle-btn-ghost">Browse Packs</a></div>
+</div>
+</section>
+<section class="faq" id="faq">
+<div class="section-label">FAQ</div>
+<h2 style="font-size:1.4rem;font-weight:700;margin-bottom:1rem;">Common questions</h2>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What format are the flashcards in?</div><div class="faq-a">Each pack is a standalone HTML file that opens in any web browser — Chrome, Firefox, Safari, Edge, on any device. No app install needed. Every pack also comes with a printable A4 PDF. The HTML files include interactive card flipping, quiz mode, category filters, and progress tracking — all running locally with zero dependencies.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do I need an internet connection?</div><div class="faq-a">No. Once downloaded, the packs work completely offline. Pure HTML/CSS/JavaScript with no external API calls, no tracking, and no server dependencies. They'll work forever.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I try before buying?</div><div class="faq-a">Yes! <a href="packs/html/html_foundations_pack1.html" download style="color:var(--accent);">Download HTML Foundations for free</a> — 20 interactive flashcards with quiz mode, filters, and a printable PDF. Experience the full product before you buy.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Are the code examples real and tested?</div><div class="faq-a">Yes. Every code snippet uses current syntax, real tool commands, and production patterns. The cybersecurity packs include actual tool commands (nmap, Burp Suite, Metasploit) with safe example targets. Code is validated for syntax correctness across all 1,600 cards.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What's your refund policy?</div><div class="faq-a">If you're not satisfied, contact us within 14 days for a full refund. No questions asked.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do I get updates?</div><div class="faq-a">The All-Access Bundle includes lifetime updates — when we release new packs, you get them. Individual packs and bundles receive content updates but don't include new packs outside your purchase.</div></div>
+</section>
+<footer>CodeFlash — Developer Flashcards That Stick<br><span style="margin-top:.5rem;display:inline-block;">Made in Austria. 80 packs. 1,600 cards. Zero tracking.</span></footer>
+</body>
+</html>

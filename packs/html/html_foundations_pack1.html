@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML: Foundations — CodeDeck</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background:#FFF7ED; color:#1C1917; min-height:100vh; }
+  .header { background:#EA580C; color:#fff; padding:1.5rem 2rem; text-align:center; }
+  .header h1 { font-size:1.6rem; font-weight:700; }
+  .header p { opacity:0.85; margin-top:0.3rem; font-size:0.95rem; }
+  .controls { display:flex; justify-content:center; gap:0.5rem; padding:1rem; flex-wrap:wrap; }
+  .controls button { padding:0.5rem 1.2rem; border:2px solid #EA580C; border-radius:8px; background:#fff; color:#EA580C; font-weight:600; cursor:pointer; transition:all 0.2s; font-size:0.85rem; }
+  .controls button:hover, .controls button.active { background:#EA580C; color:#fff; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.2rem; padding:1.5rem 2rem 3rem; max-width:1200px; margin:0 auto; }
+  .card { background:#FFFFFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08); overflow:hidden; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; position:relative; }
+  .card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.12); }
+  .card-inner { min-height:180px; display:flex; flex-direction:column; }
+  .card .tag { position:absolute; top:0.75rem; right:0.75rem; background:#FB923C22; color:#EA580C; font-size:0.7rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:99px; text-transform:uppercase; letter-spacing:0.5px; }
+  .card .front, .card .back { padding:1.4rem; }
+  .card .front { display:flex; flex-direction:column; justify-content:center; min-height:180px; }
+  .card .back { display:none; background:#FFF7ED; min-height:180px; border-top:2px solid #FB923C44; }
+  .card.flipped .front { display:none; }
+  .card.flipped .back { display:flex; flex-direction:column; justify-content:center; }
+  .card .front h3 { font-size:1rem; line-height:1.5; color:#1C1917; }
+  .card .back p, .card .back pre { font-size:0.88rem; line-height:1.6; color:#1C1917; }
+  .card .back pre { background:#FFFFFF; border:1px solid #FB923C33; border-radius:6px; padding:0.8rem; overflow-x:auto; font-size:0.8rem; margin-top:0.5rem; }
+  .card .back code { font-family:'Fira Code','Cascadia Code',monospace; }
+  .card-num { position:absolute; bottom:0.5rem; left:1rem; font-size:0.7rem; color:#EA580C88; font-weight:600; }
+  .footer { text-align:center; padding:1.5rem; font-size:0.8rem; color:#EA580C99; }
+  .progress { text-align:center; padding:0.5rem; font-size:0.85rem; color:#EA580C; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🃏 HTML: Foundations</h1>
+  <p>Document structure, semantic elements, media, a11y &amp; Web Components</p>
+</div>
+<div class="progress" id="progress">Card 0 of 20 flipped</div>
+<div class="controls" id="controls"><button class="active" onclick="filterTag('all')">All</button>
+  <button onclick="filterTag('a11y')">a11y</button>
+  <button onclick="filterTag('advanced')">advanced</button>
+  <button onclick="filterTag('attributes')">attributes</button>
+  <button onclick="filterTag('elements')">elements</button>
+  <button onclick="filterTag('head')">head</button>
+  <button onclick="filterTag('interactive')">interactive</button>
+  <button onclick="filterTag('media')">media</button>
+  <button onclick="filterTag('semantic')">semantic</button>
+  <button onclick="filterTag('structure')">structure</button>
+  <button onclick="filterTag('tables')">tables</button>
+  <button onclick="filterTag('text')">text</button></div>
+<div class="grid" id="grid">    <div class="card" data-id="1" data-tag="structure">
+      <div class="card-inner">
+        <span class="tag">structure</span>
+        <div class="front"><h3>What is the basic structure of an HTML document?</h3></div>
+        <div class="back"><p>Every HTML document needs &lt;!DOCTYPE html&gt;, &lt;html&gt;, &lt;head&gt; (metadata, title, links), and &lt;body&gt; (visible content). The doctype tells the browser to use standards mode.</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;My Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        <span class="card-num">#1</span>
+      </div>
+    </div>
+    <div class="card" data-id="2" data-tag="elements">
+      <div class="card-inner">
+        <span class="tag">elements</span>
+        <div class="front"><h3>What is the difference between block and inline elements?</h3></div>
+        <div class="back"><p>Block elements take full width and start on a new line (div, p, h1-h6, section). Inline elements only take needed width and flow within text (span, a, strong, em, img).</p>
+        <pre><code>&lt;!-- Block — full width, new line --&gt;
+&lt;div&gt;I take the full width&lt;/div&gt;
+&lt;p&gt;So do I&lt;/p&gt;
+
+&lt;!-- Inline — flows with text --&gt;
+&lt;p&gt;This has &lt;strong&gt;bold&lt;/strong&gt; and &lt;a href=&quot;#&quot;&gt;a link&lt;/a&gt; inline.&lt;/p&gt;</code></pre></div>
+        <span class="card-num">#2</span>
+      </div>
+    </div>
+    <div class="card" data-id="3" data-tag="semantic">
+      <div class="card-inner">
+        <span class="tag">semantic</span>
+        <div class="front"><h3>What are semantic HTML elements and why do they matter?</h3></div>
+        <div class="back"><p>Semantic elements describe their meaning: header, nav, main, article, section, aside, footer. They improve accessibility, SEO, and code readability vs generic divs.</p>
+        <pre><code>&lt;header&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Post Title&lt;/h2&gt;
+    &lt;section&gt;...&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;aside&gt;Sidebar&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;© 2025&lt;/footer&gt;</code></pre></div>
+        <span class="card-num">#3</span>
+      </div>
+    </div>
+    <div class="card" data-id="4" data-tag="elements">
+      <div class="card-inner">
+        <span class="tag">elements</span>
+        <div class="front"><h3>How do you create links in HTML?</h3></div>
+        <div class="back"><p>Use the &lt;a&gt; tag with href attribute. target=&quot;_blank&quot; opens in new tab (add rel=&quot;noopener noreferrer&quot; for security). Links can be absolute, relative, or anchor links.</p>
+        <pre><code>&lt;!-- External link --&gt;
+&lt;a href=&quot;https://example.com&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Visit&lt;/a&gt;
+
+&lt;!-- Relative link --&gt;
+&lt;a href=&quot;/about&quot;&gt;About Us&lt;/a&gt;
+
+&lt;!-- Anchor link --&gt;
+&lt;a href=&quot;#section2&quot;&gt;Jump to Section 2&lt;/a&gt;
+&lt;h2 id=&quot;section2&quot;&gt;Section 2&lt;/h2&gt;
+
+&lt;!-- Email/phone --&gt;
+&lt;a href=&quot;mailto:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ef6f7defbe6fff3eef2fbb0fdf1f3">[email&#160;protected]</a>&quot;&gt;Email&lt;/a&gt;
+&lt;a href=&quot;tel:+1234567890&quot;&gt;Call&lt;/a&gt;</code></pre></div>
+        <span class="card-num">#4</span>
+      </div>
+    </div>
+    <div class="card" data-id="5" data-tag="media">
+      <div class="card-inner">
+        <span class="tag">media</span>
+        <div class="front"><h3>How do you add images in HTML?</h3></div>
+        <div class="back"><p>Use &lt;img&gt; with src and alt (required for accessibility). Use width/height to prevent layout shift. &lt;picture&gt; and srcset for responsive images.</p>
+        <pre><code>&lt;!-- Basic image --&gt;
+&lt;img src=&quot;photo.jpg&quot; alt=&quot;A sunset over mountains&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;
+
+&lt;!-- Responsive --&gt;
+&lt;picture&gt;
+  &lt;source media=&quot;(min-width: 800px)&quot; srcset=&quot;large.jpg&quot;&gt;
+  &lt;source media=&quot;(min-width: 400px)&quot; srcset=&quot;medium.jpg&quot;&gt;
+  &lt;img src=&quot;small.jpg&quot; alt=&quot;Responsive image&quot;&gt;
+&lt;/picture&gt;
+
+&lt;!-- Lazy loading --&gt;
+&lt;img src=&quot;photo.jpg&quot; alt=&quot;...&quot; loading=&quot;lazy&quot;&gt;</code></pre></div>
+        <span class="card-num">#5</span>
+      </div>
+    </div>
+    <div class="card" data-id="6" data-tag="elements">
+      <div class="card-inner">
+        <span class="tag">elements</span>
+        <div class="front"><h3>How do you create lists in HTML?</h3></div>
+        <div class="back"><p>Unordered list (ul) for bullet points, ordered list (ol) for numbered items, description list (dl) for term-definition pairs. Lists can be nested.</p>
+        <pre><code>&lt;!-- Unordered --&gt;
+&lt;ul&gt;
+  &lt;li&gt;Item one&lt;/li&gt;
+  &lt;li&gt;Item two&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Ordered --&gt;
+&lt;ol type=&quot;1&quot; start=&quot;1&quot;&gt;
+  &lt;li&gt;First step&lt;/li&gt;
+  &lt;li&gt;Second step&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Description list --&gt;
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+&lt;/dl&gt;</code></pre></div>
+        <span class="card-num">#6</span>
+      </div>
+    </div>
+    <div class="card" data-id="7" data-tag="semantic">
+      <div class="card-inner">
+        <span class="tag">semantic</span>
+        <div class="front"><h3>What are the heading levels and how should you use them?</h3></div>
+        <div class="back"><p>h1 through h6, h1 being most important. Use one h1 per page. Follow hierarchy — don&#x27;t skip levels. Headings create document outline for accessibility and SEO.</p>
+        <pre><code>&lt;h1&gt;Page Title&lt;/h1&gt;          &lt;!-- One per page --&gt;
+  &lt;h2&gt;Main Section&lt;/h2&gt;       &lt;!-- Major sections --&gt;
+    &lt;h3&gt;Subsection&lt;/h3&gt;        &lt;!-- Under h2 --&gt;
+      &lt;h4&gt;Detail&lt;/h4&gt;          &lt;!-- Under h3 --&gt;
+
+&lt;!-- BAD: skipping levels --&gt;
+&lt;h1&gt;Title&lt;/h1&gt;
+&lt;h4&gt;Subsection&lt;/h4&gt;  &lt;!-- Skipped h2, h3 --&gt;</code></pre></div>
+        <span class="card-num">#7</span>
+      </div>
+    </div>
+    <div class="card" data-id="8" data-tag="tables">
+      <div class="card-inner">
+        <span class="tag">tables</span>
+        <div class="front"><h3>How do you create tables in HTML?</h3></div>
+        <div class="back"><p>Use table, thead, tbody, tfoot for structure. tr for rows, th for headers, td for data cells. Use scope attribute on th for accessibility. caption for table title.</p>
+        <pre><code>&lt;table&gt;
+  &lt;caption&gt;Quarterly Sales&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot;&gt;Quarter&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Revenue&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Q1&lt;/td&gt;
+      &lt;td&gt;$10,000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></div>
+        <span class="card-num">#8</span>
+      </div>
+    </div>
+    <div class="card" data-id="9" data-tag="head">
+      <div class="card-inner">
+        <span class="tag">head</span>
+        <div class="front"><h3>What is the &lt;meta&gt; tag and what are the essential ones?</h3></div>
+        <div class="back"><p>Meta tags provide metadata about the page. Essential: charset (UTF-8), viewport (responsive), description (SEO), and Open Graph tags (social sharing).</p>
+        <pre><code>&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Learn HTML fundamentals&quot;&gt;
+&lt;meta name=&quot;robots&quot; content=&quot;index, follow&quot;&gt;
+
+&lt;!-- Open Graph (social sharing) --&gt;
+&lt;meta property=&quot;og:title&quot; content=&quot;My Page&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;Description&quot;&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;https://example.com/img.jpg&quot;&gt;</code></pre></div>
+        <span class="card-num">#9</span>
+      </div>
+    </div>
+    <div class="card" data-id="10" data-tag="text">
+      <div class="card-inner">
+        <span class="tag">text</span>
+        <div class="front"><h3>What are HTML entities and when do you use them?</h3></div>
+        <div class="back"><p>Entities display reserved characters: &amp;lt; (&lt;), &amp;gt; (&gt;), &amp;amp; (&amp;), &amp;quot; (&quot;), &amp;nbsp; (non-breaking space), &amp;copy; (©). Use when you need literal special characters in content.</p>
+        <pre><code>&lt;!-- Reserved characters --&gt;
+&lt;p&gt;Use &amp;lt;div&amp;gt; for containers&lt;/p&gt;
+&lt;p&gt;Price: $5 &amp;amp; up&lt;/p&gt;
+
+&lt;!-- Special characters --&gt;
+&lt;p&gt;&amp;copy; 2025 CodeDeck&lt;/p&gt;
+&lt;p&gt;10&amp;nbsp;km&lt;/p&gt;  &lt;!-- non-breaking space --&gt;
+&lt;p&gt;&amp;mdash; em dash&lt;/p&gt;
+&lt;p&gt;&amp;rarr; arrow →&lt;/p&gt;</code></pre></div>
+        <span class="card-num">#10</span>
+      </div>
+    </div>
+    <div class="card" data-id="11" data-tag="media">
+      <div class="card-inner">
+        <span class="tag">media</span>
+        <div class="front"><h3>How do you embed video and audio?</h3></div>
+        <div class="back"><p>Use &lt;video&gt; and &lt;audio&gt; with source elements for format fallbacks. Add controls attribute for player UI. Provide multiple formats for browser compatibility.</p>
+        <pre><code>&lt;!-- Video --&gt;
+&lt;video controls width=&quot;640&quot; poster=&quot;thumb.jpg&quot;&gt;
+  &lt;source src=&quot;video.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  &lt;source src=&quot;video.webm&quot; type=&quot;video/webm&quot;&gt;
+  Your browser doesn&#x27;t support video.
+&lt;/video&gt;
+
+&lt;!-- Audio --&gt;
+&lt;audio controls&gt;
+  &lt;source src=&quot;audio.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+  &lt;source src=&quot;audio.ogg&quot; type=&quot;audio/ogg&quot;&gt;
+&lt;/audio&gt;</code></pre></div>
+        <span class="card-num">#11</span>
+      </div>
+    </div>
+    <div class="card" data-id="12" data-tag="elements">
+      <div class="card-inner">
+        <span class="tag">elements</span>
+        <div class="front"><h3>What is the difference between &lt;div&gt; and &lt;span&gt;?</h3></div>
+        <div class="back"><p>div is a block-level generic container (sections, wrappers). span is an inline generic container (styling text fragments). Both have no semantic meaning — use semantic elements when possible.</p>
+        <pre><code>&lt;!-- div — block container --&gt;
+&lt;div class=&quot;card&quot;&gt;
+  &lt;h3&gt;Title&lt;/h3&gt;
+  &lt;p&gt;Content here&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- span — inline container --&gt;
+&lt;p&gt;Your order is &lt;span class=&quot;status-ok&quot;&gt;confirmed&lt;/span&gt;.&lt;/p&gt;
+
+&lt;!-- Prefer semantic elements --&gt;
+&lt;article&gt; instead of &lt;div class=&quot;article&quot;&gt;
+&lt;strong&gt; instead of &lt;span class=&quot;bold&quot;&gt;</code></pre></div>
+        <span class="card-num">#12</span>
+      </div>
+    </div>
+    <div class="card" data-id="13" data-tag="attributes">
+      <div class="card-inner">
+        <span class="tag">attributes</span>
+        <div class="front"><h3>What are data attributes and how do you use them?</h3></div>
+        <div class="back"><p>Custom data-* attributes store extra information on elements. Accessible via JavaScript with element.dataset. Useful for storing state, IDs, or config without extra markup.</p>
+        <pre><code>&lt;!-- HTML --&gt;
+&lt;button data-action=&quot;delete&quot; data-id=&quot;42&quot;&gt;
+  Delete Item
+&lt;/button&gt;
+
+&lt;div data-theme=&quot;dark&quot; data-lang=&quot;en&quot;&gt;
+
+&lt;!-- JavaScript --&gt;
+const btn = document.querySelector(&#x27;button&#x27;);
+console.log(btn.dataset.action); // &quot;delete&quot;
+console.log(btn.dataset.id);     // &quot;42&quot;</code></pre></div>
+        <span class="card-num">#13</span>
+      </div>
+    </div>
+    <div class="card" data-id="14" data-tag="attributes">
+      <div class="card-inner">
+        <span class="tag">attributes</span>
+        <div class="front"><h3>What is the difference between id and class attributes?</h3></div>
+        <div class="back"><p>id must be unique per page — for one specific element (anchors, JS targeting). class can be reused on many elements — for styling groups. An element can have multiple classes but only one id.</p>
+        <pre><code>&lt;!-- id — unique, one per page --&gt;
+&lt;section id=&quot;hero&quot;&gt;...&lt;/section&gt;
+&lt;a href=&quot;#hero&quot;&gt;Go to hero&lt;/a&gt;
+
+&lt;!-- class — reusable --&gt;
+&lt;div class=&quot;card card-featured&quot;&gt;
+&lt;div class=&quot;card&quot;&gt;
+&lt;div class=&quot;card card-dimmed&quot;&gt;
+
+&lt;!-- Specificity: id (#) &gt; class (.) --&gt;
+#hero { } /* higher specificity */
+.card { }  /* lower specificity */</code></pre></div>
+        <span class="card-num">#14</span>
+      </div>
+    </div>
+    <div class="card" data-id="15" data-tag="interactive">
+      <div class="card-inner">
+        <span class="tag">interactive</span>
+        <div class="front"><h3>How do you use the &lt;details&gt; and &lt;summary&gt; elements?</h3></div>
+        <div class="back"><p>Native HTML disclosure widget — toggleable content without JavaScript. summary is the visible label, the rest is hidden until expanded. Great for FAQs and collapsible sections.</p>
+        <pre><code>&lt;details&gt;
+  &lt;summary&gt;What is CodeDeck?&lt;/summary&gt;
+  &lt;p&gt;CodeDeck is a developer flashcard platform
+     for learning programming concepts.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;!-- Open by default --&gt;
+&lt;details open&gt;
+  &lt;summary&gt;Installation&lt;/summary&gt;
+  &lt;pre&gt;npm install codedeck&lt;/pre&gt;
+&lt;/details&gt;</code></pre></div>
+        <span class="card-num">#15</span>
+      </div>
+    </div>
+    <div class="card" data-id="16" data-tag="advanced">
+      <div class="card-inner">
+        <span class="tag">advanced</span>
+        <div class="front"><h3>What is the &lt;template&gt; element?</h3></div>
+        <div class="back"><p>Template holds HTML that isn&#x27;t rendered on load. Used as a blueprint for JavaScript-generated content. Content is inert — scripts don&#x27;t run, images don&#x27;t load until cloned.</p>
+        <pre><code>&lt;template id=&quot;card-template&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h3 class=&quot;card-title&quot;&gt;&lt;/h3&gt;
+    &lt;p class=&quot;card-body&quot;&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const template = document.getElementById(&#x27;card-template&#x27;);
+const clone = template.content.cloneNode(true);
+clone.querySelector(&#x27;.card-title&#x27;).textContent = &#x27;Hello&#x27;;
+document.body.appendChild(clone);
+&lt;/script&gt;</code></pre></div>
+        <span class="card-num">#16</span>
+      </div>
+    </div>
+    <div class="card" data-id="17" data-tag="a11y">
+      <div class="card-inner">
+        <span class="tag">a11y</span>
+        <div class="front"><h3>How do you create accessible HTML?</h3></div>
+        <div class="back"><p>Use semantic elements, proper heading hierarchy, alt text on images, labels on form inputs, ARIA attributes when needed, sufficient color contrast, and keyboard navigability.</p>
+        <pre><code>&lt;!-- Label linked to input --&gt;
+&lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;email&quot; required&gt;
+
+&lt;!-- ARIA for custom widgets --&gt;
+&lt;button aria-expanded=&quot;false&quot; aria-controls=&quot;menu&quot;&gt;
+  Menu
+&lt;/button&gt;
+&lt;ul id=&quot;menu&quot; role=&quot;menu&quot; hidden&gt;...&lt;/ul&gt;
+
+&lt;!-- Skip navigation --&gt;
+&lt;a href=&quot;#main&quot; class=&quot;skip-link&quot;&gt;Skip to content&lt;/a&gt;
+&lt;main id=&quot;main&quot;&gt;...&lt;/main&gt;</code></pre></div>
+        <span class="card-num">#17</span>
+      </div>
+    </div>
+    <div class="card" data-id="18" data-tag="media">
+      <div class="card-inner">
+        <span class="tag">media</span>
+        <div class="front"><h3>What are iframes and when should you use them?</h3></div>
+        <div class="back"><p>iframes embed another HTML document inside the current page. Common for maps, videos, third-party widgets. Security: use sandbox attribute and Content-Security-Policy frame-ancestors.</p>
+        <pre><code>&lt;!-- YouTube embed --&gt;
+&lt;iframe
+  src=&quot;https://www.youtube.com/embed/VIDEO_ID&quot;
+  width=&quot;560&quot; height=&quot;315&quot;
+  allowfullscreen
+  loading=&quot;lazy&quot;
+&gt;&lt;/iframe&gt;
+
+&lt;!-- Sandboxed (restricted) --&gt;
+&lt;iframe src=&quot;widget.html&quot;
+  sandbox=&quot;allow-scripts allow-same-origin&quot;
+&gt;&lt;/iframe&gt;</code></pre></div>
+        <span class="card-num">#18</span>
+      </div>
+    </div>
+    <div class="card" data-id="19" data-tag="semantic">
+      <div class="card-inner">
+        <span class="tag">semantic</span>
+        <div class="front"><h3>What is the difference between &lt;strong&gt;/&lt;em&gt; and &lt;b&gt;/&lt;i&gt;?</h3></div>
+        <div class="back"><p>strong/em are semantic — strong means important, em means emphasis (screen readers change tone). b/i are visual-only — bold/italic without meaning. Prefer semantic tags.</p>
+        <pre><code>&lt;!-- Semantic (meaningful) --&gt;
+&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; This action is permanent.&lt;/p&gt;
+&lt;p&gt;You &lt;em&gt;must&lt;/em&gt; save before closing.&lt;/p&gt;
+
+&lt;!-- Visual only (no meaning) --&gt;
+&lt;p&gt;The movie &lt;i&gt;Inception&lt;/i&gt; was great.&lt;/p&gt;
+&lt;p&gt;The &lt;b&gt;bold&lt;/b&gt; style is decorative here.&lt;/p&gt;</code></pre></div>
+        <span class="card-num">#19</span>
+      </div>
+    </div>
+    <div class="card" data-id="20" data-tag="advanced">
+      <div class="card-inner">
+        <span class="tag">advanced</span>
+        <div class="front"><h3>What are Web Components at a high level?</h3></div>
+        <div class="back"><p>Web Components are native browser APIs for creating reusable custom elements. Three specs: Custom Elements (define new tags), Shadow DOM (encapsulated styling), HTML Templates (reusable markup).</p>
+        <pre><code>// Define custom element
+class MyCard extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+      &lt;div class=&quot;card&quot;&gt;
+        &lt;h3&gt;${this.getAttribute(&#x27;title&#x27;)}&lt;/h3&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+      &lt;/div&gt;`;
+  }
+}
+customElements.define(&#x27;my-card&#x27;, MyCard);
+
+// Use in HTML
+&lt;my-card title=&quot;Hello&quot;&gt;
+  &lt;p&gt;Card content here&lt;/p&gt;
+&lt;/my-card&gt;</code></pre></div>
+        <span class="card-num">#20</span>
+      </div>
+    </div></div>
+<div class="footer">CodeDeck — Developer Flashcards That Stick · codedeck.dev</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+let flipped=new Set();
+document.querySelectorAll('.card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    c.classList.toggle('flipped');
+    const id=c.dataset.id;
+    if(c.classList.contains('flipped'))flipped.add(id); else flipped.delete(id);
+    document.getElementById('progress').textContent='Card '+flipped.size+' of 20 flipped';
+  });
+});
+function filterTag(tag){
+  document.querySelectorAll('.controls button').forEac
