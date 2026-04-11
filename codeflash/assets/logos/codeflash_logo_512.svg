@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A1F2E"/>
+      <stop offset="100%" stop-color="#141824"/>
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#7DFFC0"/>
+      <stop offset="50%" stop-color="#5BF0A5"/>
+      <stop offset="100%" stop-color="#3DD68C"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="245" fill="#0C0E14"/>
+  <circle cx="256" cy="256" r="245" fill="none" stroke="#5BF0A5" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- Subtle ring glow -->
+  <circle cx="256" cy="256" r="235" fill="none" stroke="#5BF0A5" stroke-width="0.5" opacity="0.08"/>
+
+  <!-- Back card (offset, dimmer) -->
+  <rect x="178" y="108" width="180" height="240" rx="16" fill="#1A1F2E" stroke="#5BF0A5" stroke-width="1.5" opacity="0.25" transform="rotate(6, 268, 228)"/>
+
+  <!-- Front card -->
+  <rect x="158" y="98" width="180" height="240" rx="16" fill="url(#cardGrad)" stroke="#5BF0A5" stroke-width="2" opacity="0.9"/>
+
+  <!-- Card inner border accent -->
+  <rect x="170" y="110" width="156" height="216" rx="10" fill="none" stroke="#5BF0A5" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Lightning bolt glow (behind) -->
+  <path d="M272 148 L232 248 L268 248 L228 358" fill="none" stroke="#5BF0A5" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" filter="url(#softglow)" opacity="0.3"/>
+
+  <!-- Lightning bolt main -->
+  <path d="M272 148 L232 248 L268 248 L228 358" fill="none" stroke="url(#boltGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+
+  <!-- Small decorative dots (like card content lines) -->
+  <g fill="#5BF0A5" opacity="0.2">
+    <rect x="182" y="128" width="40" height="3" rx="1.5"/>
+    <rect x="182" y="138" width="28" height="3" rx="1.5"/>
+    <rect x="280" y="315" width="40" height="3" rx="1.5"/>
+    <rect x="292" y="325" width="28" height="3" rx="1.5"/>
+  </g>
+
+  <!-- Text: CodeFlash -->
+  <text x="256" y="430" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif" font-size="52" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1.5">
+    Code<tspan fill="#5BF0A5">Flash</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="256" y="460" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="16" fill="#8B8D95" text-anchor="middle" letter-spacing="2" font-weight="400">
+    DEVELOPER FLASHCARDS
+  </text>
+</svg>

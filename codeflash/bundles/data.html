@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Engineer Bundle — CodeFlash</title>
+<meta name="description" content="6 flashcard packs, 120 cards. Build and scale data pipelines. From ETL/ELT patterns to Apache Spark, dbt models, dimensional modeling, and streaming w">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/logos/codeflash_favicon_64.png">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0D11;--surface:#13161E;--surface2:#1A1E28;--border:#252A36;--text:#E8E6E1;--muted:#8B8D95;--dim:#5A5C64;--accent:#5BF0A5;--accent2:#3DD68C;--accent-dim:#5BF0A520;--blue:#5B9DF0;--warn:#F0C05B;--pink:#F05B8D;--purple:#A05BF0;--font:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;width:100%;background:rgba(11,13,17,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;padding:.75rem 2rem;display:flex;justify-content:space-between;align-items:center}.nav-logo{font-weight:700;font-size:1.1rem;letter-spacing:-.02em;text-decoration:none;color:var(--text)}.nav-logo span{color:var(--accent)}.nav-links{display:flex;gap:1.5rem;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s}.nav-links a:hover{color:var(--text)}.nav-cta{background:var(--accent)!important;color:var(--bg)!important;padding:.4rem 1rem;border-radius:6px;font-weight:600;font-size:.8rem}
+.container{max-width:900px;margin:0 auto;padding:5rem 2rem 4rem}.breadcrumb{font-size:.8rem;color:var(--dim);margin-bottom:2rem}.breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{color:var(--accent)}
+.bundle-hero{margin-bottom:3rem}.bundle-hero h1{font-size:2.2rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.5rem}.bundle-hero h1 span{color:var(--accent)}
+.bundle-stats{display:flex;gap:2rem;margin:1.5rem 0;flex-wrap:wrap}.bstat{text-align:center}.bstat-val{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--accent)}.bstat-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.bundle-desc{color:var(--muted);font-size:.95rem;line-height:1.7;max-width:700px;margin-bottom:2rem}
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}.btn{display:inline-block;padding:.75rem 2rem;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .2s;border:none;cursor:pointer}.btn-primary{background:var(--accent);color:var(--bg)}.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}.btn-ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}.btn-ghost:hover{background:var(--accent);color:var(--bg)}.btn-dim{background:transparent;color:var(--muted);border:1px solid var(--border)}.btn-dim:hover{border-color:var(--accent);color:var(--accent)}
+.section-label{font-family:var(--mono);font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.75rem}h2{font-size:1.3rem;font-weight:700;margin-bottom:1.25rem;letter-spacing:-.02em}
+.pack-list{display:grid;gap:.75rem;margin-bottom:3rem}.pack-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;transition:border-color .2s}.pack-card:hover{border-color:var(--accent)}.pack-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem}.pack-name{font-weight:600;font-size:.95rem}.pack-badge{font-family:var(--mono);font-size:.6rem;padding:.2em .6em;border-radius:99px;background:var(--accent-dim);color:var(--accent)}.pack-desc{color:var(--muted);font-size:.82rem;line-height:1.5}.pack-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.6rem}.pack-tag{font-family:var(--mono);font-size:.6rem;padding:.15em .5em;border-radius:4px;background:var(--surface2);color:var(--dim)}
+.pricing-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:3rem}.pricing-box h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem}.pricing-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.price-option{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;transition:border-color .2s}.price-option:hover{border-color:var(--accent)}.price-option.highlight{border-color:var(--accent);position:relative}.price-option .po-label{font-size:.8rem;font-weight:600;margin-bottom:.25rem}.price-option .po-price{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--accent);margin-bottom:.25rem}.price-option .po-detail{font-size:.72rem;color:var(--muted)}.price-option .po-badge{position:absolute;top:-.6rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.55rem;background:var(--accent);color:var(--bg);padding:.15em .6em;border-radius:4px;font-weight:700}
+.sample-section{margin-bottom:3rem}.sample-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:.75rem;cursor:pointer;transition:border-color .2s;position:relative}.sample-card:hover{border-color:var(--accent)}.sample-card .stag{font-family:var(--mono);font-size:.6rem;background:var(--accent-dim);color:var(--accent);padding:.2em .5em;border-radius:4px;position:absolute;top:.75rem;right:.75rem}.sample-card .sq{font-weight:500;font-size:.95rem;padding-right:3rem}.sample-card .sa{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted)}.sample-card .scode{font-family:var(--mono);font-size:.75rem;background:var(--bg);padding:.75rem;border-radius:6px;margin-top:.75rem;color:var(--accent2);overflow-x:auto;white-space:pre}.sample-card.open .sa{display:block}.sample-card::after{content:'tap to flip';font-family:var(--mono);font-size:.6rem;color:var(--dim);position:absolute;bottom:.6rem;right:.75rem}.sample-card.open::after{content:''}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:.75rem;color:var(--dim);margin-top:2rem}
+@media(max-width:700px){.bundle-hero h1{font-size:1.6rem}.pricing-options{grid-template-columns:1fr}.bundle-stats{gap:1.5rem}}
+</style>
+</head>
+<body>
+<nav><a class="nav-logo" href="../index.html">Code<span>Flash</span></a><div class="nav-links"><a href="../index.html#topics">Topics</a><a href="../index.html#pricing">All Bundles</a><a href="https://codeflash.lemonsqueezy.com" class="nav-cta">Get Started</a></div></nav>
+<div class="container">
+<div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#pricing">Bundles</a> / Data Engineer</div>
+<div class="bundle-hero">
+<h1>📊 Data Engineer <span>Bundle</span></h1>
+<div class="bundle-stats">
+<div class="bstat"><div class="bstat-val">6</div><div class="bstat-label">Packs</div></div>
+<div class="bstat"><div class="bstat-val">120</div><div class="bstat-label">Cards</div></div>
+<div class="bstat"><div class="bstat-val">4</div><div class="bstat-label">Topics</div></div>
+<div class="bstat"><div class="bstat-val">HTML+PDF</div><div class="bstat-label">Format</div></div>
+</div>
+<div class="bundle-desc">Build and scale data pipelines. From ETL/ELT patterns to Apache Spark, dbt models, dimensional modeling, and streaming with Kafka. Includes SQL mastery (joins through window functions), Python fundamentals, and Docker for containerized pipelines.</div>
+<div class="cta-row">
+<a href="https://codeflash.lemonsqueezy.com" class="btn btn-primary">Get This Bundle — $24</a>
+<a href="https://codeflash.lemonsqueezy.com" class="btn btn-dim">Or get All-Access — $129</a>
+</div>
+</div>
+<div class="section-label">What's included</div>
+<h2>6 packs, 120 cards</h2>
+<div class="pack-list"><div class="pack-card">
+<div class="pack-header"><span class="pack-name">Data Engineering — ETL, Spark & dbt</span><span class="pack-badge">20 cards</span></div>
+<div class="pack-desc">ETL vs ELT, Spark DataFrames, dbt models, Airflow DAGs, medallion architecture, Kafka, data quality.</div>
+<div class="pack-tags"><span class="pack-tag">spark</span><span class="pack-tag">dbt</span><span class="pack-tag">airflow</span></div>
+</div>
+<div class="pack-card">
+<div class="pack-header"><span class="pack-name">SQL — Fundamentals & Queries</span><span class="pack-badge">20 cards</span></div>
+<div class="pack-desc">SELECT, WHERE, GROUP BY, aggregates, INSERT/UPDATE/DELETE.</div>
+<div class="pack-tags"><span class="pack-tag">select</span><span class="pack-tag">aggregates</span></div>
+</div>
+<div class="pack-card">
+<div class="pack-header"><span class="pack-name">SQL — Joins & Window Functions</span><span class="pack-badge">20 cards</span></div>
+<div class="pack-desc">INNER/LEFT/RIGHT joins, CTEs, ROW_NUMBER, RANK, LAG/LEAD.</div>
+<div class="pack-tags"><span class="pack-tag">joins</span><span class="pack-tag">cte</span><span class="pack-tag">window</span></div>
+</div>
+<div class="pack-card">
+<div class="pack-header"><span class="pack-name">SQL — Optimization & Admin</span><span class="pack-badge">20 cards</span></div>
+<div class="pack-desc">Indexing, EXPLAIN plans, transactions, ACID, normalization.</div>
+<div class="pack-tags"><span class="pack-tag">indexes</span><span class="pack-tag">explain</span></div>
+</div>
+<div class="pack-card">
+<div class="pack-header"><span class="pack-name">Python — Core Concepts</span><span class="pack-badge">20 cards</span></div>
+<div class="pack-desc">Types, comprehensions, OOP, generators, dataclasses, type hints.</div>
+<div class="pack-tags"><span class="pack-tag">python</span><span class="pack-tag">oop</span></div>
+</div>
+<div class="pack-card">
+<div class="pack-header"><span class="pack-name">Docker — Fundamentals</span><span class="pack-badge">20 cards</span></div>
+<div class="pack-desc">Containers, Dockerfile, volumes, networking for pipeline deployment.</div>
+<div class="pack-tags"><span class="pack-tag">docker</span><span class="pack-tag">containers</span></div>
+</div>
+</div>
+<div class="section-label">Sample cards</div>
+<h2>Try before you buy</h2>
+<div class="sample-section"><div class="sample-card" onclick="this.classList.toggle('open')">
+<span class="stag">dbt</span>
+<div class="sq">What are incremental models in dbt?</div>
+<div class="sa">Process only new/changed data instead of rebuilding the full table. Use is_incremental() macro with a timestamp filter.<div class="scode">{{ config(materialized='incremental', unique_key='event_id') }}
+SELECT * FROM {{ source('raw', 'events') }}
+{% if is_incremental() %}
+  WHERE created_at > (SELECT MAX(created_at) FROM {{ this }})
+{% endif %}</div></div>
+</div>
+<div class="sample-card" onclick="this.classList.toggle('open')">
+<span class="stag">spark</span>
+<div class="sq">How does Spark handle partitioning?</div>
+<div class="sa">Partitions split data across executors. Minimize shuffles with broadcast joins and partition-by-key. Coalesce reduces partitions without shuffle.<div class="scode">df = df.repartition(200, "user_id")  # shuffle
+df = df.coalesce(10)                 # no shuffle
+result = big_df.join(broadcast(small_df), "key")</div></div>
+</div>
+</div>
+<div class="section-label">Ways to get this bundle</div>
+<div class="pricing-box">
+<h3>Choose how you'd like to study</h3>
+<div class="pricing-options">
+<div class="price-option"><div class="po-label">Individual Pack</div><div class="po-price">$7</div><div class="po-detail">Any single pack. 20 cards, HTML + PDF.</div></div>
+<div class="price-option highlight"><div class="po-badge">THIS BUNDLE</div><div class="po-label">Data Engineer</div><div class="po-price">$24</div><div class="po-detail">All 6 packs. 120 cards. Save $18 vs individual.</div></div>
+<div class="price-option"><div class="po-label">All-Access (1 Year)</div><div class="po-price">$99</div><div class="po-detail">All 80+ packs. 12 months of updates.</div></div>
+<div class="price-option"><div class="po-label">All-Access (Lifetime)</div><div class="po-price">$129</div><div class="po-detail">Every pack forever. One payment.</div></div>
+</div></div>
+<div class="cta-row" style="justify-content:center;">
+<a href="https://codeflash.lemonsqueezy.com" class="btn btn-primary">Get Data Engineer Bundle — $24</a>
+<a href="../index.html#pricing" class="btn btn-ghost">View All Bundles</a>
+</div>
+</div>
+<footer>CodeFlash — Developer Flashcards That Stick<br><span style="margin-top:.5rem;display:inline-block;">Made in Austria. 80 packs. 1,600 cards. Zero tracking.</span></footer>
+</body></html>
