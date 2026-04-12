@@ -92,9 +92,11 @@ to the other projects.
   content pipeline. Marketing engine and standalone revenue stream.
 - **ai-brain** (repo: `ai-brain`) — Knowledge layer: compliance,
   opportunities, revenue, decisions, patterns.
-- **gute-haende-frontend** (repo: `gute-haende-frontend`) — Personal
-  project. Role: *pending one-liner from owner; filled in by the
-  cross-repo Portfolio Map sweep.*
+- **Gute Hände** (repo: `gute-haende-frontend`) — Platform connecting
+  individuals seeking safe, consensual, non-sexual human touch and
+  presence-based sessions with trained practitioners in a structured,
+  ethical environment. Firewalled from marketing-style cross-
+  pollination (see rule 7 below).
 
 ### Cross-Pollination Rules (subtle, never forced)
 
@@ -115,6 +117,12 @@ to the other projects.
    Vistera (4K video, VR, spatial computing); CodeFlash users creating
    content are AI Shortcut candidates.
 6. **ALL → Websites** — Every project needs web presence.
+7. **Gute Hände — firewalled from inbound marketing bridges.**
+   Other ecosystem repos do not pipe prospects INTO Gute Hände. Narrow
+   allowed bridges only: Websites may serve as a build contractor for
+   a Gute-Hände landing surface; The AI Shortcut may use Gute Hände
+   as a digital-product-design case study only with explicit written
+   approval from the Gute Hände owner.
 
 Integration style: footer links, "related tool" suggestions, genuine
 references in content. Never pop-ups, never ads.
