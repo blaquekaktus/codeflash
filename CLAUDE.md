@@ -41,8 +41,7 @@ Precision: **3 decimal places** (e.g. `0.450 units`).
 You MUST:
 
 - NEVER commit real names, emails, phones, or postal addresses.
-- NEVER commit currency symbols (€ $ £ ¥) or currency codes
-  (USD EUR GBP CHF).
+- NEVER commit currency symbols or currency codes.
 - If a real identity appears in context, replace with a UID placeholder
   and flag that the user must add the offline mapping entry.
 - If a currency figure appears in context, replace with `[X units]`
@@ -50,7 +49,7 @@ You MUST:
 - Screenshots/logs containing PII are never committed or sent to remote
   MCPs without redaction.
 
-Before any commit, scan the diff for: `@` (email), currency symbols,
+Before any commit, scan the diff for email markers, currency symbols,
 digit-heavy phone-like patterns. If found → abort, sanitize with
 UIDs/units, re-stage. The canonical pre-commit hook spec lives in
 `ai-brain/patterns/precommit-hook.md`.
