@@ -182,9 +182,10 @@ Cluster-detection questions for every visitor/prospect interaction:
   signal is required.
 - **Compliance gate** runs before any outreach → see
   `ai-brain/compliance/countries/[region].md`.
-- **Legal review required** before outreach in any region — a lawyer
-  from the jurisdiction's shortlist in
-  `ai-brain/compliance/lawyers/[country].md` must sign off.
+- **Expert consultation discipline** — do not propose paid expert
+  consultation to re-confirm a rule that public statutes, portals, or
+  settled case law already make plain. See
+  `ai-brain/patterns/research-discipline.md` for the decision test.
 
 ---
 
