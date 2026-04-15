@@ -2,7 +2,8 @@
 
 Generated 2026-04-15 from a side-by-side profile of all 7 portfolio repos
 (ai-brain, automatedcontentcreator, flashcards-programming-app, websites,
-gute-haende-frontend, codeflash, vistera).
+gute-haende-frontend, codeflash, vistera). Updated 2026-04-15 after the
+portfolio cleanup cycle.
 
 This file captures gaps that **only surface when comparing repos against
 each other**. Local content work is out of scope.
@@ -19,50 +20,55 @@ optimizer, despite the matching name.
 
 ## codeflash's slice of the cross-repo backlog
 
-### 1. Manual pack copy from `flashcards-programming-app` is a real
-landmine
-Pack HTML is hand-copied from the product repo. flashcards-programming-app
-already has two incident reports (2026-04-10) about stalled pack-building
-sessions with unverified build status. The drift is happening.
+### 1. Manual pack copy from `flashcards-programming-app` is a real landmine
+Pack HTML still hand-copied from the product repo. The sync workflow
+was deferred pending explicit path mapping from the owner ("which
+flashcards paths actually belong downstream"). Drift remains real —
+flashcards has incident reports about stalled pack-building sessions.
 
-**Action:** receive a release-tag PR from flashcards-programming-app's
-new release workflow (see flashcards GAPS item #2). Reject manual edits
-to `bundles/*.html` via CODEOWNERS or a pre-commit guard.
+**Status:** open, blocked on mapping.
 
-### 2. Name collision with `flashcards-programming-app/package.json.name`
-That package.json sets `name: "codeflash"`, shadowing this repo's
-identity. Cross-repo confusion any time someone says "the codeflash repo."
+### 2. ~~Name collision with `flashcards-programming-app/package.json.name`~~ → **done**
+✅ Upstream renamed to `flashcards-programming-app` in
+   flashcards-programming-app PR #12. No more shadowing.
 
-**Action:** coordinate the rename in flashcards (see flashcards GAPS
-item #1).
+### 3. ~~Pre-commit hook v2 missing~~ → **phase 1 done**
+✅ `.layer0-allow` installed (PR #4).
+❌ Hook script propagation blocked on ai-brain#13. Tracked in #5 here.
 
-### 3. Pre-commit hook v2 missing
-Same as other frontends. See ai-brain GAPS item #2.
-
-### 4. Three open `claude/*` branches duplicate work in websites and
-gute-haende
-`claudemd-drift-propagation-lBvaw`, `continue-claude-framework-S2wCF`,
-`currency-token-cleanup-Ht1TN`. Coordinate via portfolio-level issue.
+### 4. Three open `claude/*` branches duplicate work in websites and gute-haende
+Still open. `claudemd-drift-propagation-lBvaw`,
+`continue-claude-framework-S2wCF`, `currency-token-cleanup-Ht1TN`.
+Coordinate via portfolio-level issue.
 
 ### 5. No CMS pipeline from automatedcontentcreator
-Blog/resources pages are flagged in CLAUDE.md as "once they exist."
-automatedcontentcreator could generate them.
+Blog/resources pages still flagged in CLAUDE.md as "once they exist."
+Upstream repo (automatedcontentcreator) has 18 stub modules; nothing to
+consume yet.
 
-**Action:** see automatedcontentcreator GAPS item #1 — that repo will
-add `src/repurpose/targets/codeflash_bundles.py`. Also extend it to a
-`codeflash_blog.py` target when blog scaffolding lands.
+**Status:** open, upstream pending.
 
-### 6. AT legal pages
-"Made in Austria" branding without an Impressum/Datenschutz. Same
-problem as 4 sibling frontends.
+### 6. ~~AT legal pages~~ → **templates available**
+✅ Austrian Impressum + Datenschutz scaffolds shipped in ai-brain
+   `compliance/templates/at/` (checklists + placeholder templates with
+   statute citations). Ready to render — static HTML surface, just
+   copy + fill placeholders.
+❌ Not yet rendered into this site.
 
-**Action:** consume ai-brain's pending Austrian legal templates (see
-ai-brain GAPS item #4).
+**Status:** ready to consume.
+
+## New in this cycle (not in the original GAPS analysis)
+
+### 7. Portfolio hygiene baseline shipped
+✅ `.github/ISSUE_TEMPLATE/`, PR template, `.gitattributes`,
+   `.github/workflows/file-size-guard.yml` (PR #6).
 
 ## Cross-repo roadmap (full list)
 
 See each sibling's `GAPS.md`. Items where this repo is critical path:
-9 (receive pack-sync PRs), 8 (rename collision in flashcards).
+
+- #9 (receive pack-sync PRs) — open, blocked on mapping
+- #8 (rename collision) — **done**
 
 ## Anti-scope
 
