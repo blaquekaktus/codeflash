@@ -1,0 +1,16 @@
+# Layer 0 allow-list. See ai-brain/patterns/deny-names-scope.md for
+# guidance. Every entry is a conscious whitelist decision — keep tight
+# and review on every commit that modifies this file. Comments must
+# describe trigger tokens abstractly so the hook does not block this
+# file itself.
+
+# Framework self-documentation
+CLAUDE.md
+GAPS.md
+
+# Public marketing site (entire repo is the public surface)
+README.md
+index.html
+bundles/
+packs/
+assets/
