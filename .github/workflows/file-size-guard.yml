@@ -1,0 +1,46 @@
+name: File size guard
+
+on:
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Skip if label 'large-file-ok' is set
+        id: skip
+        if: contains(github.event.pull_request.labels.*.name, 'large-file-ok')
+        run: echo "skipped=true" >> "$GITHUB_OUTPUT"
+
+      - name: Block files larger than 10 MB
+        if: steps.skip.outputs.skipped != 'true'
+        run: |
+          set -e
+          MAX_BYTES=$((10 * 1024 * 1024))
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          OFFENDERS=""
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            [ ! -f "$file" ] && continue
+            SIZE=$(wc -c < "$file")
+            if [ "$SIZE" -gt "$MAX_BYTES" ]; then
+              OFFENDERS="$OFFENDERS\n  $file ($SIZE bytes)"
+            fi
+          done < <(git diff --name-only --diff-filter=AM "$BASE_SHA" "$HEAD_SHA")
+          if [ -n "$OFFENDERS" ]; then
+            printf "Files exceed 10 MB limit:$OFFENDERS\n"
+            printf "\nOptions:\n"
+            printf "  - Use Git LFS for binary assets\n"
+            printf "  - Move large files to external storage (Supabase Storage, S3, etc.)\n"
+            printf "  - If intentional, add the 'large-file-ok' label to bypass this check\n"
+            exit 1
+          fi
