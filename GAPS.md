@@ -48,14 +48,25 @@ consume yet.
 
 **Status:** open, upstream pending.
 
-### 6. ~~AT legal pages~~ → **templates available**
+### 6. ~~AT legal pages~~ → **skeleton rendered; owner values pending**
 ✅ Austrian Impressum + Datenschutz scaffolds shipped in ai-brain
    `compliance/templates/at/` (checklists + placeholder templates with
-   statute citations). Ready to render — static HTML surface, just
-   copy + fill placeholders.
-❌ Not yet rendered into this site.
+   statute citations).
+✅ Static HTML pages rendered from the templates: `legal/impressum.html`
+   and `legal/datenschutz.html`. Theme matches the CodeFlash landing
+   page (dark + JetBrains Mono + Outfit + `--accent` green).
+   `{{token}}` placeholders are visibly flagged in a JetBrains-Mono
+   pill style, and each page carries a draft banner pointing at the
+   ai-brain checklist.
+❌ Placeholders not filled (business legal name, Firmenbuchnummer,
+   contact email, processing-purpose blocks, cookie/tracking block,
+   etc.). Owner task before going live.
+❌ Footer link from `index.html` not yet added. Trivial follow-up:
+   add `<a href="legal/impressum.html">Impressum</a> ·
+   <a href="legal/datenschutz.html">Datenschutz</a>` to the existing
+   `<footer>`.
 
-**Status:** ready to consume.
+**Status:** scaffold rendered; wiring + real values pending.
 
 ## New in this cycle (not in the original GAPS analysis)
 

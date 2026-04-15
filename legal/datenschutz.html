@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutzerklärung — CodeFlash</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="256x256" href="../assets/logos/codeflash_logo_256.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/logos/codeflash_favicon_64.png">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0D11;--surface:#13161E;--border:#252A36;--text:#E8E6E1;--muted:#8B8D95;--accent:#5BF0A5;--warn:#F0C05B;--font:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;padding:2rem 1.25rem;-webkit-font-smoothing:antialiased}
+.container{max-width:760px;margin:0 auto}
+.nav-back{font-family:var(--mono);font-size:.8rem;margin-bottom:2rem;display:inline-block}
+.nav-back a{color:var(--muted);text-decoration:none}
+.nav-back a:hover{color:var(--accent)}
+h1{font-size:2rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.5rem}
+h2{font-size:1.1rem;font-weight:700;margin-top:2rem;margin-bottom:.6rem;border-bottom:1px solid var(--border);padding-bottom:.4rem}
+h3{font-size:.95rem;font-weight:600;margin-top:1.25rem;margin-bottom:.4rem;color:var(--text)}
+p,li{color:var(--muted);font-size:.95rem;margin-bottom:.4rem}
+strong{color:var(--text)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+ul{padding-left:1.25rem;margin-bottom:.5rem}
+.draft-banner{background:var(--warn);color:var(--bg);padding:1rem 1.25rem;border-radius:8px;font-size:.85rem;margin-bottom:2rem;font-weight:500;line-height:1.55}
+.draft-banner strong{display:block;margin-bottom:.4rem;font-size:.95rem;color:var(--bg)}
+.draft-banner a{color:var(--bg);text-decoration:underline;font-weight:600}
+.token{font-family:var(--mono);background:rgba(240,192,91,.18);color:var(--warn);padding:.12em .4em;border-radius:3px;font-size:.88em}
+.purpose-block{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem;margin:1.25rem 0}
+.purpose-block h3{margin-top:0}
+.repeat-hint{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:.75rem;display:block;font-style:italic}
+.review{font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border)}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.75rem;color:var(--muted);text-align:center}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="nav-back"><a href="../index.html">← CodeFlash</a></div>
+
+<h1>Datenschutzerklärung</h1>
+
+<div class="draft-banner">
+<strong>Entwurf — Platzhalter noch nicht ausgefüllt</strong>
+Jeder <span class="token">{{token}}</span> unten muss vor Veröffentlichung
+durch den echten Wert ersetzt werden. Der Verarbeitungsblock ist pro
+Verarbeitungszweck zu wiederholen. Vollständige Feldliste mit DSGVO-/
+TKG-Rechtsgrundlagen siehe
+<a href="https://github.com/blaquekaktus/ai-brain/blob/main/compliance/templates/at/datenschutz-checklist.md">ai-brain/compliance/templates/at/datenschutz-checklist.md</a>.
+</div>
+
+<h2>Verantwortlicher (Art 13 Abs 1 lit a, b DSGVO)</h2>
+<p><strong><span class="token">{{controller_name}}</span></strong></p>
+<p><span class="token">{{controller_address}}</span></p>
+<ul>
+<li>Email: <span class="token">{{controller_email}}</span></li>
+<li>Telefon: <span class="token">{{controller_phone_or_na}}</span></li>
+<li>Datenschutzbeauftragter: <span class="token">{{dpo_contact_or_na}}</span></li>
+</ul>
+
+<h2>Verarbeitungstätigkeiten</h2>
+
+<div class="purpose-block">
+<h3>Zweck: <span class="token">{{purpose_name}}</span></h3>
+<ul>
+<li>Zweck: <span class="token">{{purpose_description}}</span></li>
+<li>Rechtsgrundlage: <span class="token">{{legal_basis}}</span> (Art 6 Abs 1 lit <span class="token">{{legal_basis_letter}}</span> DSGVO)</li>
+<li><span class="token">{{berechtigtes_interesse_block_if_lit_f}}</span></li>
+<li>Datenkategorien: <span class="token">{{data_categories}}</span></li>
+<li>Empfängerkategorien: <span class="token">{{recipient_categories}}</span></li>
+<li>Speicherdauer: <span class="token">{{retention}}</span></li>
+<li>Drittlandtransfer: <span class="token">{{third_country_or_none}}</span></li>
+<li>Garantien bei Drittlandtransfer: <span class="token">{{transfer_safeguard_or_na}}</span></li>
+</ul>
+<span class="repeat-hint">Diesen Block für jeden weiteren Verarbeitungszweck kopieren.</span>
+</div>
+
+<h2>Ihre Rechte als betroffene Person</h2>
+<p>Sie haben jederzeit das Recht auf:</p>
+<ul>
+<li>Auskunft (Art 15 DSGVO)</li>
+<li>Berichtigung (Art 16 DSGVO)</li>
+<li>Löschung (Art 17 DSGVO)</li>
+<li>Einschränkung der Verarbeitung (Art 18 DSGVO)</li>
+<li>Datenübertragbarkeit (Art 20 DSGVO)</li>
+<li>Widerspruch gegen die Verarbeitung (Art 21 DSGVO)</li>
+<li>Widerruf erteilter Einwilligungen (Art 7 Abs 3 DSGVO)</li>
+<li>Beschwerde bei der Aufsichtsbehörde</li>
+</ul>
+<p>Aufsichtsbehörde ist die Österreichische Datenschutzbehörde,
+Barichgasse 40–42, 1030 Wien,
+<a href="mailto:dsb@dsb.gv.at">dsb@dsb.gv.at</a>,
+<a href="https://www.dsb.gv.at">https://www.dsb.gv.at</a>.</p>
+
+<h2>Automatisierte Entscheidungsfindung (Art 13 Abs 2 lit f DSGVO)</h2>
+<p><span class="token">{{automated_decisionmaking_block_or_none}}</span></p>
+
+<h2>Herkunft der Daten (Art 14 DSGVO, falls nicht direkt erhoben)</h2>
+<p><span class="token">{{source_of_data_block_or_na}}</span></p>
+
+<h2>Cookies und Tracking (TKG 2021 § 165)</h2>
+<p><span class="token">{{cookie_block}}</span></p>
+
+<h2>Direktwerbung (TKG 2021 § 174)</h2>
+<p><span class="token">{{direct_marketing_block_or_na}}</span></p>
+
+<div class="review">
+Stand: <span class="token">{{last_reviewed_date}}</span> — vor Veröffentlichung
+gegen <a href="https://github.com/blaquekaktus/ai-brain/blob/main/compliance/templates/at/datenschutz-checklist.md">datenschutz-checklist.md</a> prüfen.
+</div>
+
+<footer>© CodeFlash · <a href="impressum.html">Impressum</a> · <a href="../index.html">Startseite</a></footer>
+</div>
+</body>
+</html>
