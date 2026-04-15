@@ -14,3 +14,7 @@ index.html
 bundles/
 packs/
 assets/
+
+# Pre-commit hook source — the hook searches for currency symbols and
+# codes, so its own regex literals would trip it without this exemption.
+scripts/
