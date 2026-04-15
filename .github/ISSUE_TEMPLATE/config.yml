@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Cross-repo gap analysis
+    url: https://github.com/blaquekaktus/codeflash/blob/main/GAPS.md
+    about: Check this repo's slice of the portfolio gap analysis before filing a cross-repo issue.
+  - name: ai-brain framework policy
+    url: https://github.com/blaquekaktus/ai-brain
+    about: Policy, patterns, ADRs, and cross-pollination rules for all 7 portfolio repos.
