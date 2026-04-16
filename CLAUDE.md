@@ -261,6 +261,29 @@ reason to add one appears. Hosting: GitHub Pages or equivalent.
 Never force cross-pollination. No pop-ups, no ads, no intrusive
 placements. Subtle, genuine references only.
 
+## Design system
+
+Typography, colour tokens, and voice are **not decided per-repo**. The
+canonical spec lives in `ai-brain/design-system/` and applies to every
+frontend repo in the ecosystem (this one, `websites`, `vistera`,
+`gute-haende-frontend`, `automatedcontentcreator`).
+
+- **Typography:** `ai-brain/design-system/typography.md`
+  (currently: Inter body + JetBrains Mono for code/numerics/labels).
+- **Colour tokens:** `ai-brain/design-system/tokens.md`
+  (dark surface, `--accent` green, semantic warn/blue/pink/purple).
+- **Voice:** `ai-brain/design-system/voice.md`
+  (insider/no-BS, evidence first, hype never).
+
+Before any styling or copy change, read the relevant spec file. If the
+change conflicts with the spec, update the spec first in `ai-brain`
+(single source of truth), then propagate — never branch the tokens in
+this repo.
+
+Deviations need a written reason committed alongside the change (e.g.
+a line in the PR description pointing at why this page legitimately
+departs from the spec). "It looked better" is not a reason.
+
 ## Build + deploy conventions
 
 - Accessibility baseline: WCAG 2.1 AA.
