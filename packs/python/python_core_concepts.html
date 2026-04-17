@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python: Core Concepts — CodeFlash</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background:#EFF6FF; color:#1E3A5F; min-height:100vh; }
+  .header { background:#2563EB; color:#fff; padding:1.5rem 2rem; text-align:center; }
+  .header h1 { font-size:1.6rem; font-weight:700; }
+  .header p { opacity:0.85; margin-top:0.3rem; font-size:0.95rem; }
+  .controls { display:flex; justify-content:center; gap:0.5rem; padding:1rem; flex-wrap:wrap; }
+  .controls button { padding:0.5rem 1.2rem; border:2px solid #2563EB; border-radius:8px; background:#fff; color:#2563EB; font-weight:600; cursor:pointer; transition:all 0.2s; font-size:0.85rem; }
+  .controls button:hover, .controls button.active { background:#2563EB; color:#fff; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.2rem; padding:1.5rem 2rem 3rem; max-width:1200px; margin:0 auto; }
+  .card { background:#FFFFFF; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08); overflow:hidden; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; position:relative; }
+  .card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.12); }
+  .card-inner { min-height:180px; display:flex; flex-direction:column; }
+  .card .tag { position:absolute; top:0.75rem; right:0.75rem; background:#60A5FA22; color:#2563EB; font-size:0.7rem; font-weight:700; padding:0.2rem 0.6rem; border-radius:99px; text-transform:uppercase; letter-spacing:0.5px; }
+  .card .front, .card .back { padding:1.4rem; }
+  .card .front { display:flex; flex-direction:column; justify-content:center; min-height:180px; }
+  .card .back { display:none; background:#EFF6FF; min-height:180px; border-top:2px solid #60A5FA44; }
+  .card.flipped .front { display:none; }
+  .card.flipped .back { display:flex; flex-direction:column; justify-content:center; }
+  .card .front h3 { font-size:1rem; line-height:1.5; color:#1E3A5F; }
+  .card .back p, .card .back pre { font-size:0.88rem; line-height:1.6; color:#1E3A5F; }
+  .card .back pre { background:#FFFFFF; border:1px solid #60A5FA33; border-radius:6px; padding:0.8rem; overflow-x:auto; font-size:0.8rem; margin-top:0.5rem; }
+  .card .back code { font-family:'Fira Code','Cascadia Code',monospace; }
+  .card-num { position:absolute; bottom:0.5rem; left:1rem; font-size:0.7rem; color:#2563EB88; font-weight:600; }
+  .footer { text-align:center; padding:1.5rem; font-size:0.8rem; color:#2563EB99; }
+  .progress { text-align:center; padding:0.5rem; font-size:0.85rem; color:#2563EB; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🃏 Python: Core Concepts</h1>
+  <p>Types, comprehensions, OOP, async, decorators &amp; stdlib essentials</p>
+</div>
+<div class="progress" id="progress">Card 0 of 20 flipped</div>
+<div class="controls" id="controls"><button class="active" onclick="filterTag('all')">All</button>
+  <button onclick="filterTag('OOP')">OOP</button>
+  <button onclick="filterTag('comprehensions')">comprehensions</button>
+  <button onclick="filterTag('concurrency')">concurrency</button>
+  <button onclick="filterTag('data-structures')">data-structures</button>
+  <button onclick="filterTag('errors')">errors</button>
+  <button onclick="filterTag('functional')">functional</button>
+  <button onclick="filterTag('functions')">functions</button>
+  <button onclick="filterTag('gotchas')">gotchas</button>
+  <button onclick="filterTag('io')">io</button>
+  <button onclick="filterTag('iterators')">iterators</button>
+  <button onclick="filterTag('modules')">modules</button>
+  <button onclick="filterTag('patterns')">patterns</button>
+  <button onclick="filterTag('stdlib')">stdlib</button>
+  <button onclick="filterTag('strings')">strings</button>
+  <button onclick="filterTag('syntax')">syntax</button>
+  <button onclick="filterTag('types')">types</button>
+  <button onclick="filterTag('typing')">typing</button></div>
+<div class="grid" id="grid">    <div class="card" data-id="1" data-tag="types">
+      <div class="card-inner">
+        <span class="tag">types</span>
+        <div class="front"><h3>What are Python&#x27;s core data types?</h3></div>
+        <div class="back"><p>Immutable: int, float, str, bool, tuple, frozenset. Mutable: list, dict, set. None is a singleton null type. Everything in Python is an object.</p>
+        <pre><code>x = 42          # int
+pi = 3.14       # float
+name = &#x27;Alice&#x27;  # str
+flag = True     # bool
+nums = [1,2,3]  # list (mutable)
+coords = (1,2)  # tuple (immutable)
+uniq = {1,2,3}  # set
+data = {&#x27;a&#x27;: 1} # dict
+nothing = None  # NoneType</code></pre></div>
+        <span class="card-num">#1</span>
+      </div>
+    </div>
+    <div class="card" data-id="2" data-tag="comprehensions">
+      <div class="card-inner">
+        <span class="tag">comprehensions</span>
+        <div class="front"><h3>How do list comprehensions work?</h3></div>
+        <div class="back"><p>Concise syntax for creating lists from iterables. Supports filtering with if, nested loops, and expressions. Faster than equivalent for loops.</p>
+        <pre><code># Basic
+squares = [x**2 for x in range(10)]
+
+# With filter
+evens = [x for x in range(20) if x % 2 == 0]
+
+# With transform + filter
+names = [name.upper() for name in users if name.startswith(&#x27;S&#x27;)]
+
+# Dict comprehension
+word_len = {w: len(w) for w in words}
+
+# Set comprehension
+unique_lengths = {len(w) for w in words}</code></pre></div>
+        <span class="card-num">#2</span>
+      </div>
+    </div>
+    <div class="card" data-id="3" data-tag="functions">
+      <div class="card-inner">
+        <span class="tag">functions</span>
+        <div class="front"><h3>How do *args and **kwargs work?</h3></div>
+        <div class="back"><p>*args collects positional arguments into a tuple. **kwargs collects keyword arguments into a dict. Use for flexible function signatures. * and ** also unpack in function calls.</p>
+        <pre><code>def greet(*args, **kwargs):
+    for name in args:
+        print(f&quot;Hi {name}&quot;)
+    for key, val in kwargs.items():
+        print(f&quot;{key}: {val}&quot;)
+
+greet(&#x27;Alice&#x27;, &#x27;Alex&#x27;, role=&#x27;dev&#x27;, lang=&#x27;Python&#x27;)
+
+# Unpacking
+nums = [1, 2, 3]
+print(*nums)  # 1 2 3
+config = {&#x27;host&#x27;: &#x27;localhost&#x27;, &#x27;port&#x27;: 8080}
+connect(**config)</code></pre></div>
+        <span class="card-num">#3</span>
+      </div>
+    </div>
+    <div class="card" data-id="4" data-tag="functions">
+      <div class="card-inner">
+        <span class="tag">functions</span>
+        <div class="front"><h3>How do decorators work in Python?</h3></div>
+        <div class="back"><p>Decorators wrap functions to add behavior. They take a function, return a new function. Use @decorator syntax. Common uses: logging, timing, auth, caching.</p>
+        <pre><code>import functools
+
+def timer(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        print(f&quot;{func.__name__} took {time.time()-start:.2f}s&quot;)
+        return result
+    return wrapper
+
+@timer
+def slow_function():
+    time.sleep(1)
+    return &#x27;done&#x27;</code></pre></div>
+        <span class="card-num">#4</span>
+      </div>
+    </div>
+    <div class="card" data-id="5" data-tag="OOP">
+      <div class="card-inner">
+        <span class="tag">OOP</span>
+        <div class="front"><h3>How does Python&#x27;s class system work?</h3></div>
+        <div class="back"><p>Classes define objects with __init__ constructor, self reference, methods, and class/static methods. Supports inheritance, multiple inheritance, and dunder methods for operator overloading.</p>
+        <pre><code>class User:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+
+    def greet(self):
+        return f&quot;Hi, I&#x27;m {self.name}&quot;
+
+    def __repr__(self):
+        return f&quot;User({self.name!r}, {self.email!r})&quot;
+
+    def __eq__(self, other):
+        return self.email == other.email
+
+class Admin(User):
+    def __init__(self, name, email, level):
+        super().__init__(name, email)
+        self.level = level</code></pre></div>
+        <span class="card-num">#5</span>
+      </div>
+    </div>
+    <div class="card" data-id="6" data-tag="iterators">
+      <div class="card-inner">
+        <span class="tag">iterators</span>
+        <div class="front"><h3>What are generators and how do they work?</h3></div>
+        <div class="back"><p>Generators produce values lazily with yield. They&#x27;re memory-efficient for large sequences. Generator expressions use () instead of []. They implement the iterator protocol.</p>
+        <pre><code>def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+# Lazy — only computes on demand
+fib = fibonacci()
+for _ in range(10):
+    print(next(fib))
+
+# Generator expression
+sum_sq = sum(x**2 for x in range(1000000))
+# Memory: O(1) vs list comprehension O(n)</code></pre></div>
+        <span class="card-num">#6</span>
+      </div>
+    </div>
+    <div class="card" data-id="7" data-tag="errors">
+      <div class="card-inner">
+        <span class="tag">errors</span>
+        <div class="front"><h3>How does exception handling work in Python?</h3></div>
+        <div class="back"><p>try/except catches exceptions. else runs if no exception. finally always runs. Raise custom exceptions with raise. Create custom exceptions by inheriting Exception.</p>
+        <pre><code>try:
+    result = 10 / x
+except ZeroDivisionError:
+    print(&quot;Can&#x27;t divide by zero&quot;)
+except (TypeError, ValueError) as e:
+    print(f&quot;Bad input: {e}&quot;)
+else:
+    print(f&quot;Result: {result}&quot;)  # no exception
+finally:
+    cleanup()  # always runs
+
+# Custom exception
+class ValidationError(Exception):
+    def __init__(self, field, message):
+        self.field = field
+        super().__init__(message)</code></pre></div>
+        <span class="card-num">#7</span>
+      </div>
+    </div>
+    <div class="card" data-id="8" data-tag="patterns">
+      <div class="card-inner">
+        <span class="tag">patterns</span>
+        <div class="front"><h3>What are context managers and the with statement?</h3></div>
+        <div class="back"><p>Context managers handle setup/teardown automatically. with statement ensures cleanup even if exceptions occur. Built-in: files, locks, DB connections. Create with __enter__/__exit__ or @contextmanager.</p>
+        <pre><code># Built-in file context manager
+with open(&#x27;data.txt&#x27;, &#x27;r&#x27;) as f:
+    content = f.read()
+# File auto-closed, even on exception
+
+# Custom context manager
+from contextlib import contextmanager
+
+@contextmanager
+def timer(label):
+    start = time.time()
+    yield  # code in &#x27;with&#x27; block runs here
+    print(f&quot;{label}: {time.time()-start:.2f}s&quot;)
+
+with timer(&#x27;processing&#x27;):
+    heavy_computation()</code></pre></div>
+        <span class="card-num">#8</span>
+      </div>
+    </div>
+    <div class="card" data-id="9" data-tag="data-structures">
+      <div class="card-inner">
+        <span class="tag">data-structures</span>
+        <div class="front"><h3>How do Python dictionaries work?</h3></div>
+        <div class="back"><p>Hash map with O(1) average lookup. Keys must be hashable (immutable). Ordered since Python 3.7. Methods: get(), items(), keys(), values(), setdefault(), update().</p>
+        <pre><code>d = {&#x27;name&#x27;: &#x27;Alice&#x27;, &#x27;role&#x27;: &#x27;dev&#x27;}
+
+# Safe access with default
+age = d.get(&#x27;age&#x27;, 0)  # 0 if missing
+
+# Merge (Python 3.9+)
+merged = d | {&#x27;age&#x27;: 30, &#x27;lang&#x27;: &#x27;Python&#x27;}
+
+# Iteration
+for key, value in d.items():
+    print(f&quot;{key}: {value}&quot;)
+
+# defaultdict for counting
+from collections import defaultdict
+counts = defaultdict(int)
+for word in words:
+    counts[word] += 1</code></pre></div>
+        <span class="card-num">#9</span>
+      </div>
+    </div>
+    <div class="card" data-id="10" data-tag="strings">
+      <div class="card-inner">
+        <span class="tag">strings</span>
+        <div class="front"><h3>What are f-strings and string formatting?</h3></div>
+        <div class="back"><p>f-strings (Python 3.6+) embed expressions in strings with {}. Support format specs, method calls, and expressions. The modern replacement for .format() and % formatting.</p>
+        <pre><code>name = &#x27;Alice&#x27;
+age = 30
+
+# f-string (preferred)
+print(f&quot;{name} is {age} years old&quot;)
+print(f&quot;Pi: {3.14159:.2f}&quot;)        # 3.14
+print(f&quot;{&#x27;hello&#x27;:&gt;20}&quot;)             # right-align
+print(f&quot;{1000000:,}&quot;)               # 1,000,000
+print(f&quot;{name!r}&quot;)                   # repr: &#x27;Alice&#x27;
+
+# Debug (Python 3.8+)
+print(f&quot;{name=}, {age=}&quot;)  # name=&#x27;Alice&#x27;, age=30</code></pre></div>
+        <span class="card-num">#10</span>
+      </div>
+    </div>
+    <div class="card" data-id="11" data-tag="typing">
+      <div class="card-inner">
+        <span class="tag">typing</span>
+        <div class="front"><h3>How do you use type hints in Python?</h3></div>
+        <div class="back"><p>Type hints add optional type annotations. Not enforced at runtime — use mypy for static checking. Improves IDE support, documentation, and code clarity.</p>
+        <pre><code>from typing import Optional, Union
+
+def greet(name: str, times: int = 1) -&gt; str:
+    return f&quot;Hello {name}! &quot; * times
+
+def find_user(user_id: int) -&gt; Optional[dict]:
+    return db.get(user_id)  # might return None
+
+# Modern syntax (Python 3.10+)
+def process(data: str | int) -&gt; list[str]:
+    ...
+
+# Generics
+def first(items: list[T]) -&gt; T:
+    return items[0]</code></pre></div>
+        <span class="card-num">#11</span>
+      </div>
+    </div>
+    <div class="card" data-id="12" data-tag="gotchas">
+      <div class="card-inner">
+        <span class="tag">gotchas</span>
+        <div class="front"><h3>What is the difference between == and is?</h3></div>
+        <div class="back"><p>== compares values (equality). is compares identity (same object in memory). Use is only for None, True, False checks. Small integers (-5 to 256) are cached so is may be misleading.</p>
+        <pre><code>a = [1, 2, 3]
+b = [1, 2, 3]
+
+a == b  # True  (same value)
+a is b  # False (different objects)
+
+# Correct None check
+if result is None:
+    print(&quot;No result&quot;)
+
+# NOT: if result == None (works but wrong style)
+
+# Integer caching gotcha
+x = 256
+y = 256
+x is y  # True (cached)
+x = 257
+y = 257
+x is y  # May be False!</code></pre></div>
+        <span class="card-num">#12</span>
+      </div>
+    </div>
+    <div class="card" data-id="13" data-tag="io">
+      <div class="card-inner">
+        <span class="tag">io</span>
+        <div class="front"><h3>How do you work with files in Python?</h3></div>
+        <div class="back"><p>Use open() with context managers. Modes: r (read), w (write/truncate), a (append), x (create new), b (binary). pathlib is the modern way to handle paths.</p>
+        <pre><code>from pathlib import Path
+
+# Read
+text = Path(&#x27;data.txt&#x27;).read_text()
+
+# Write
+Path(&#x27;output.txt&#x27;).write_text(&#x27;hello&#x27;)
+
+# Line by line (memory efficient)
+with open(&#x27;big.txt&#x27;) as f:
+    for line in f:
+        process(line.strip())
+
+# JSON
+import json
+data = json.loads(Path(&#x27;config.json&#x27;).read_text())
+Path(&#x27;out.json&#x27;).write_text(json.dumps(data, indent=2))</code></pre></div>
+        <span class="card-num">#13</span>
+      </div>
+    </div>
+    <div class="card" data-id="14" data-tag="OOP">
+      <div class="card-inner">
+        <span class="tag">OOP</span>
+        <div class="front"><h3>How do dataclasses work?</h3></div>
+        <div class="back"><p>dataclasses auto-generate __init__, __repr__, __eq__, and more. Clean alternative to regular classes for data containers. Use frozen=True for immutable instances.</p>
+        <pre><code>from dataclasses import dataclass, field
+
+@dataclass
+class User:
+    name: str
+    email: str
+    age: int = 0
+    tags: list[str] = field(default_factory=list)
+
+user = User(&#x27;Alice&#x27;, &#x27;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="621122160711164c010d0f">[email&#160;protected]</a>&#x27;, 30)
+print(user)  # User(name=&#x27;Alice&#x27;, email=&#x27;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0a794a7e6f797e24696567">[email&#160;protected]</a>&#x27;, age=30, tags=[])
+
+@dataclass(frozen=True)  # immutable
+class Point:
+    x: float
+    y: float</code></pre></div>
+        <span class="card-num">#14</span>
+      </div>
+    </div>
+    <div class="card" data-id="15" data-tag="functional">
+      <div class="card-inner">
+        <span class="tag">functional</span>
+        <div class="front"><h3>What are Python&#x27;s built-in higher-order functions?</h3></div>
+        <div class="back"><p>map() applies function to each item. filter() keeps items where function returns True. sorted() with key function. reduce() accumulates values. Lambda for inline functions.</p>
+        <pre><code>nums = [1, 2, 3, 4, 5]
+
+# map — transform
+squared = list(map(lambda x: x**2, nums))
+
+# filter — select
+evens = list(filter(lambda x: x % 2 == 0, nums))
+
+# sorted with key
+users = sorted(users, key=lambda u: u.age, reverse=True)
+
+# reduce — accumulate
+from functools import reduce
+total = reduce(lambda a, b: a + b, nums)  # 15
+
+# Prefer comprehensions over map/filter:
+[x**2 for x in nums]  # cleaner than map</code></pre></div>
+        <span class="card-num">#15</span>
+      </div>
+    </div>
+    <div class="card" data-id="16" data-tag="modules">
+      <div class="card-inner">
+        <span class="tag">modules</span>
+        <div class="front"><h3>How does Python&#x27;s import system work?</h3></div>
+        <div class="back"><p>import loads modules. from...import gets specific names. Packages are directories with __init__.py. Use relative imports within packages. __all__ controls * imports.</p>
+        <pre><code>import os
+import json
+from pathlib import Path
+from collections import defaultdict, Counter
+from typing import Optional
+
+# Alias
+import numpy as np
+import pandas as pd
+
+# Relative import (within package)
+from . import utils
+from ..models import User
+
+# Conditional import
+try:
+    import ujson as json
+except ImportError:
+    import json</code></pre></div>
+        <span class="card-num">#16</span>
+      </div>
+    </div>
+    <div class="card" data-id="17" data-tag="concurrency">
+      <div class="card-inner">
+        <span class="tag">concurrency</span>
+        <div class="front"><h3>What is the Global Interpreter Lock (GIL)?</h3></div>
+        <div class="back"><p>The GIL allows only one thread to execute Python bytecode at a time. Limits CPU-bound parallelism with threads. Workarounds: multiprocessing (separate processes), C extensions, or async for I/O-bound work.</p>
+        <pre><code># Threads — good for I/O-bound (GIL released during I/O)
+from concurrent.futures import ThreadPoolExecutor
+with ThreadPoolExecutor(max_workers=5) as pool:
+    results = pool.map(fetch_url, urls)
+
+# Processes — good for CPU-bound (bypasses GIL)
+from concurrent.futures import ProcessPoolExecutor
+with ProcessPoolExecutor() as pool:
+    results = pool.map(compute_heavy, data)
+
+# Async — best for I/O-bound, single thread
+async def main():
+    results = await asyncio.gather(*tasks)</code></pre></div>
+        <span class="card-num">#17</span>
+      </div>
+    </div>
+    <div class="card" data-id="18" data-tag="concurrency">
+      <div class="card-inner">
+        <span class="tag">concurrency</span>
+        <div class="front"><h3>How does async/await work in Python?</h3></div>
+        <div class="back"><p>async def defines a coroutine. await pauses until the result is ready. asyncio.run() starts the event loop. Use asyncio.gather() for concurrent I/O. Single-threaded concurrency.</p>
+        <pre><code>import asyncio
+import aiohttp
+
+async def fetch(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as resp:
+            return await resp.text()
+
+async def main():
+    urls = [&#x27;https://api.example.com/1&#x27;, &#x27;/2&#x27;, &#x27;/3&#x27;]
+    results = await asyncio.gather(
+        *[fetch(url) for url in urls]
+    )
+    return results
+
+asyncio.run(main())</code></pre></div>
+        <span class="card-num">#18</span>
+      </div>
+    </div>
+    <div class="card" data-id="19" data-tag="syntax">
+      <div class="card-inner">
+        <span class="tag">syntax</span>
+        <div class="front"><h3>What is the walrus operator (:=)?</h3></div>
+        <div class="back"><p>Assignment expression (Python 3.8+) assigns and returns a value in one step. Useful in while loops, comprehensions, and if statements to avoid repeated computation.</p>
+        <pre><code># Without walrus
+line = input()
+while line != &#x27;quit&#x27;:
+    process(line)
+    line = input()
+
+# With walrus
+while (line := input()) != &#x27;quit&#x27;:
+    process(line)
+
+# In comprehension
+results = [y for x in data if (y := expensive(x)) &gt; threshold]
+
+# In if statement
+if (match := pattern.search(text)) is not None:
+    print(match.group())</code></pre></div>
+        <span class="card-num">#19</span>
+      </div>
+    </div>
+    <div class="card" data-id="20" data-tag="stdlib">
+      <div class="card-inner">
+        <span class="tag">stdlib</span>
+        <div class="front"><h3>What are Python&#x27;s key standard library modules?</h3></div>
+        <div class="back"><p>os/pathlib (filesystem), json (serialization), datetime (time), re (regex), collections (data structures), itertools (iteration), functools (HOFs), logging, unittest, typing.</p>
+        <pre><code>from pathlib import Path          # modern file paths
+from collections import Counter, deque, defaultdict
+from itertools import chain, groupby, product
+from functools import lru_cache, partial, reduce
+from datetime import datetime, timedelta
+from typing import Optional, Union
+import re, json, os, logging, unittest
+
+# Caching
+@lru_cache(maxsize=128)
+def fibonacci(n):
+    if n &lt; 2: return n
+    return fibonacci(n-1) + fibonacci(n-2)</code></pre></div>
+        <span class="card-num">#20</span>
+      </div>
+    </div></div>
+<div class="footer">CodeFlash — Developer Flashcards That Stick · codeflash.dev</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+let flipped=new Set();
+document.querySelectorAll('.card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    c.classList.toggle('flipped');
+    const id=c.dataset.id;
+    if(c.classList.contains('flipped'))flipped.add(id); else flipped.delete(id);
+    document.getElementById('progress').textContent='Card '+flipped.siz
