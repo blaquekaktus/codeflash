@@ -54,7 +54,7 @@ consume yet.
    statute citations).
 ✅ Static HTML pages rendered from the templates: `legal/impressum.html`
    and `legal/datenschutz.html`. Theme matches the CodeFlash landing
-   page (dark + JetBrains Mono + Outfit + `--accent` green).
+   page (dark + JetBrains Mono + Inter + `--accent` green).
    `{{token}}` placeholders are visibly flagged in a JetBrains-Mono
    pill style, and each page carries a draft banner pointing at the
    ai-brain checklist.
