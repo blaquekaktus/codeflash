@@ -13,6 +13,28 @@
     ]
   },
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -n --arg d \"$(date +%Y-%m-%d)\" '{\"systemMessage\": \"Session \\($d) — codeflash marketing site. All CTAs must point to the live flashcards app URL. Pricing must match flashcards-programming-app exactly.\"}'",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"Before compacting: preserve (1) current branch name and any uncommitted file paths, (2) any pricing or CTA changes in progress, (3) what was accomplished and what still remains open.\"}'",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
