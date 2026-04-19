@@ -56,4 +56,17 @@ if [ -f "$deny_names" ]; then
   done < "$deny_names"
 fi
 
+# Defense-in-depth: Python SDK second pass (catches patterns the bash regex misses)
+if command -v python3 &>/dev/null && python3 -c "import ai_brain_sdk" 2>/dev/null; then
+  set +e
+  git diff --cached | python3 -m ai_brain_sdk validate-layer0
+  SDK_EXIT=$?
+  set -e
+  if [ $SDK_EXIT -ne 0 ]; then
+    echo "ai-brain-sdk: Layer 0 violations detected — commit blocked." >&2
+    exit 1
+  fi
+fi
+# If SDK not installed, bash regex above is still the gate — not a hard failure
+
 exit 0
