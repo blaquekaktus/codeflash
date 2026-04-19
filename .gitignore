@@ -1,0 +1,17 @@
+# Large binary bundles — distribute via CDN/R2, not git
+FLASHCARDS_TOTAL/
+*.zip
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secrets
+.env
+.env.local
+
+# Claude Code
+.claude/settings.local.json
+.claude/worktrees/
