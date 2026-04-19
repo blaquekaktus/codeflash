@@ -38,6 +38,10 @@ Precision: **3 decimal places** (e.g. `0.450 units`).
 
 ### Agent Rules (every session in this repo)
 
+**No conversational sign-offs.** Do not add closing lines like "Branches pushed, no PRs opened per your standing rule" or similar acknowledgments at the end of turns. State what's done inside the task output only; the turn ends when the summary ends.
+
+**PR discipline.** One logical change per PR — a feature, a fix, or a refactor, not all three. If a task touches more than ~400 lines or 5 files across unrelated concerns, split it. Prefer merging small PRs fast over one large PR that sits in review. Use `isolation: worktree` when invoking the `experiment` agent for speculative or risky changes.
+
 You MUST:
 
 - NEVER commit real names, emails, phones, or postal addresses.
