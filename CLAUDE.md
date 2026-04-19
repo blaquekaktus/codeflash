@@ -42,6 +42,8 @@ Precision: **3 decimal places** (e.g. `0.450 units`).
 
 **PR discipline.** One logical change per PR — a feature, a fix, or a refactor, not all three. If a task touches more than ~400 lines or 5 files across unrelated concerns, split it. Prefer merging small PRs fast over one large PR that sits in review. Use `isolation: worktree` when invoking the `experiment` agent for speculative or risky changes.
 
+<important if="you are writing files, committing code, or pushing to remote">
+
 You MUST:
 
 - NEVER commit real names, emails, phones, or postal addresses.
@@ -52,6 +54,8 @@ You MUST:
   and flag for local conversion.
 - Screenshots/logs containing PII are never committed or sent to remote
   MCPs without redaction.
+
+</important>
 
 Before any commit, scan the diff for email markers, currency symbols,
 digit-heavy phone-like patterns. If found → abort, sanitize with

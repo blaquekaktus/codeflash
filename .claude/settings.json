@@ -11,5 +11,18 @@
       "Glob",
       "Grep"
     ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"Turn complete — verify: tests pass · no PII in diff · if context feels slow, /compact with a summary hint before the next task.\"}'",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
   }
 }
