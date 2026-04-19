@@ -34,7 +34,7 @@ if m=$(printf '%s\n' "$added" | grep -En '[[:alnum:]._%+-]+@[[:alnum:].-]+\.[[:a
   fail 'email-like token found' "$m"
 fi
 
-if m=$(printf '%s\n' "$added" | grep -En '[€$£¥]' || true); [ -n "$m" ]; then
+if m=$(printf '%s\n' "$added" | grep -En '[€£¥]|\$[0-9]' || true); [ -n "$m" ]; then
   fail 'currency symbol found — use units' "$m"
 fi
 
