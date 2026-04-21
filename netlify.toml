@@ -1,0 +1,64 @@
+# Netlify config for codeflash (static marketing site)
+#
+# Hosts: codeflash.lechner-studios.at
+# Per ai-brain/decisions/0008-hosting-split-netlify-vercel.md
+# (static sites → Netlify; framework apps → Vercel)
+#
+# Setup steps live in docs/DEPLOY_SETUP.md (added separately).
+
+[build]
+  # Static-deployable — no build step per CLAUDE.md anti-scope.
+  publish    = "."
+  command    = "echo 'static site — no build'"
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true   # serves /legal/impressum instead of /legal/impressum.html
+
+[build.processing.css]
+  bundle  = false      # CSS is inline in index.html; nothing to bundle
+  minify  = false
+
+[build.processing.js]
+  bundle  = false
+  minify  = false
+
+[build.processing.images]
+  compress = true      # safe: marketing banners and logo PNGs
+
+# ─── Security headers (apply to all responses) ────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options          = "DENY"
+    X-Content-Type-Options   = "nosniff"
+    Referrer-Policy          = "strict-origin-when-cross-origin"
+    Permissions-Policy       = "interest-cohort=(), geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# ─── Legal pages: noindex (drafts until controller-identity P0 lands) ──
+# In-page <meta name="robots"> is already set; the header is belt-and-braces.
+[[headers]]
+  for = "/legal/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# ─── Pack HTML: immutable cache (content keyed by filename) ───────────
+[[headers]]
+  for = "/packs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ─── Bundle preview pages: immutable cache ────────────────────────────
+[[headers]]
+  for = "/bundles/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ─── Static assets: long cache ────────────────────────────────────────
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
