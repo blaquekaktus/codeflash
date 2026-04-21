@@ -4,36 +4,213 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CodeFlash — Developer Flashcards That Stick</title>
-<meta name="description" content="80 interactive flashcard packs with real code examples. Open in your browser, study offline, print for your desk. No app needed.">
+<meta name="description" content="82 interactive flashcard packs with real code examples. Open in your browser, study offline, print for your desk. No app needed.">
 <meta property="og:title" content="CodeFlash — Developer Flashcards That Stick">
 <meta property="og:description" content="82 interactive flashcard packs. 1,640 cards. 32 topics. Real code. Works offline.">
-<meta property="og:image" content="https://blaquekaktus.github.io/flashcards-programming-app/assets/banners/codeflash_banner_1600x300.png">
+<meta property="og:image" content="https://codeflash.lechner-studios.at/assets/banners/codeflash_banner_1600x300.png">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://blaquekaktus.github.io/flashcards-programming-app/">
+<meta property="og:url" content="https://codeflash.lechner-studios.at/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="CodeFlash — Developer Flashcards That Stick">
 <meta name="twitter:description" content="82 flashcard packs. 1,640 cards. Real code. Works offline.">
-<meta name="twitter:image" content="https://blaquekaktus.github.io/flashcards-programming-app/assets/banners/codeflash_banner_1600x300.png">
+<meta name="twitter:image" content="https://codeflash.lechner-studios.at/assets/banners/codeflash_banner_1600x300.png">
 <link rel="icon" type="image/png" sizes="256x256" href="assets/logos/codeflash_logo_256.png">
 <link rel="icon" type="image/png" sizes="64x64" href="assets/logos/codeflash_favicon_64.png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0B0D11;--surface:#13161E;--surface2:#1A1E28;--border:#252A36;--text:#E8E6E1;--muted:#8B8D95;--dim:#5A5C64;--accent:#5BF0A5;--accent2:#3DD68C;--accent-dim:#5BF0A520;--blue:#5B9DF0;--warn:#F0C05B;--pink:#F05B8D;--purple:#A05BF0;--font:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',monospace}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
-nav{position:fixed;top:0;width:100%;background:rgba(11,13,17,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;padding:.75rem 2rem;display:flex;justify-content:space-between;align-items:center}.nav-logo{font-weight:700;font-size:1.1rem;letter-spacing:-.02em}.nav-logo span{color:var(--accent)}.nav-links{display:flex;gap:1.5rem;align-items:center}.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s}.nav-links a:hover{color:var(--text)}.nav-cta{background:var(--accent)!important;color:var(--bg)!important;padding:.4rem 1rem;border-radius:6px;font-weight:600;font-size:.8rem}.hamburger{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
-section{max-width:1000px;margin:0 auto;padding:0 2rem}.section-label{font-family:var(--mono);font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.75rem}
-.hero{padding:8rem 2rem 4rem;text-align:center;max-width:1000px;margin:0 auto}.hero h1{font-size:3.2rem;font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem}.hero h1 span{color:var(--accent)}.hero .sub{color:var(--muted);font-size:1.1rem;max-width:520px;margin:0 auto 2rem;line-height:1.6}.hero-cta{display:inline-flex;gap:1rem;flex-wrap:wrap;justify-content:center}.btn{display:inline-block;padding:.75rem 2rem;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .2s;border:none;cursor:pointer}.btn-primary{background:var(--accent);color:var(--bg)}.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}.btn-free{background:transparent;color:var(--accent);border:1px solid var(--accent)}.btn-free:hover{background:var(--accent);color:var(--bg)}
-.stats{display:flex;justify-content:center;gap:3rem;margin:3rem 0;flex-wrap:wrap}.stat{text-align:center}.stat-val{font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--accent)}.stat-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem}
-.free-cta{text-align:center;margin:2.5rem auto 1rem;padding:2rem;background:var(--surface);border:1px solid rgba(91,240,165,.2);border-radius:14px;max-width:600px}.free-cta h3{font-size:1rem;font-weight:600;margin-bottom:.4rem}.free-cta p{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
-.personas{padding:4rem 0}.persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}.persona{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem}.persona-icon{font-size:1.5rem;margin-bottom:.75rem}.persona h3{font-size:.95rem;font-weight:600;margin-bottom:.4rem}.persona p{font-size:.82rem;color:var(--muted);line-height:1.5}.persona .highlight{font-family:var(--mono);font-size:.7rem;color:var(--accent);margin-top:.75rem}
-.how{padding:5rem 0}.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}.how-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem}.how-num{font-family:var(--mono);font-size:.7rem;font-weight:700;background:var(--accent);color:var(--bg);width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}.how-card h3{font-size:1rem;font-weight:600;margin-bottom:.5rem}.how-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
-.features{padding:4rem 0}.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem}.feat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem}.feat h3{font-size:.9rem;font-weight:600;margin-bottom:.4rem}.feat h3::before{content:'';display:inline-block;width:8px;height:8px;background:var(--accent);border-radius:2px;margin-right:.5rem;vertical-align:middle}.feat p{font-size:.82rem;color:var(--muted)}
-.topics{padding:4rem 0}.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.5rem;margin-top:1.5rem}.topic-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:.82rem;cursor:pointer;transition:border-color .2s}.topic-item:hover{border-color:var(--accent)}.topic-head{display:flex;justify-content:space-between;align-items:center;padding:.7rem .9rem}.topic-head .count{font-family:var(--mono);font-size:.7rem;color:var(--accent)}.topic-head::after{content:'+';font-family:var(--mono);font-size:.9rem;color:var(--dim);margin-left:.5rem}.topic-item.open .topic-head::after{content:'−'}.topic-packs{display:none;padding:0 .9rem .7rem;font-size:.75rem;color:var(--muted);line-height:1.8}.topic-item.open .topic-packs{display:block}.topic-packs span{display:block;padding-left:.75rem;border-left:2px solid var(--border)}
-.demo{padding:4rem 0;text-align:center}.demo-frame{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:2rem;max-width:700px;margin-left:auto;margin-right:auto}.demo-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:1rem;text-align:left;cursor:pointer;transition:border-color .2s;position:relative}.demo-card:hover{border-color:var(--accent)}.demo-tag{font-family:var(--mono);font-size:.6rem;background:var(--accent-dim);color:var(--accent);padding:.2em .5em;border-radius:4px;position:absolute;top:.75rem;right:.75rem}.demo-q{font-weight:500;font-size:.95rem;padding-right:3rem}.demo-a{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted)}.demo-code{font-family:var(--mono);font-size:.75rem;background:var(--bg);padding:.75rem;border-radius:6px;margin-top:.75rem;color:var(--accent2);overflow-x:auto;white-space:pre}.demo-card.open .demo-a{display:block}.demo-card::after{content:'tap to flip';font-family:var(--mono);font-size:.6rem;color:var(--dim);position:absolute;bottom:.6rem;right:.75rem}.demo-card.open::after{content:''}.demo-hint{font-size:.75rem;color:var(--dim);margin-top:1rem}
-.pricing{padding:5rem 0}.pricing>h2{text-align:center;font-size:1.6rem;font-weight:700;margin-bottom:.5rem}.pricing>.sub{text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:2.5rem}
-.bundle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:2rem}.bundle-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative;transition:border-color .2s}.bundle-card:hover{border-color:var(--accent)}.bundle-card.featured{border-color:var(--accent)}.bundle-badge{position:absolute;top:-10px;right:16px;font-family:var(--mono);font-size:.6rem;background:var(--accent);color:var(--bg);padding:.2em .7em;border-radius:4px;font-weight:700}.bundle-name{font-size:1rem;font-weight:600;margin-bottom:.2rem}.bundle-price{font-family:var(--mono);font-size:1.6rem;font-weight:700;color:var(--accent);margin-bottom:.4rem}.bundle-price small{font-size:.75rem;color:var(--muted);font-weight:400}.bundle-desc{font-size:.78rem;color:var(--muted);margin-bottom:.75rem;line-height:1.5}.bundle-meta{font-family:var(--mono);font-size:.65rem;color:var(--dim)}.bundle-btn{display:block;text-align:center;margin-top:1rem;padding:.55rem;border-radius:8px;font-weight:600;font-size:.8rem;text-decoration:none;transition:all .2s}.bundle-btn-primary{background:var(--accent);color:var(--bg)}.bundle-btn-ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
-.faq{padding:4rem 0}.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0;cursor:pointer}.faq-q{font-weight:500;font-size:.95rem;display:flex;justify-content:space-between;align-items:center}.faq-q::after{content:'+';font-family:var(--mono);color:var(--accent);font-size:1.2rem}.faq-item.open .faq-q::after{content:'−'}.faq-a{display:none;padding-top:.75rem;font-size:.85rem;color:var(--muted);line-height:1.7}.faq-item.open .faq-a{display:block}
-footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:.75rem;color:var(--dim);margin-top:4rem}
-@media(max-width:700px){.hero h1{font-size:2rem}.how-grid,.persona-grid{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr}.stats{gap:1.5rem}nav{padding:.75rem 1rem}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(11,13,17,.97);flex-direction:column;padding:1rem 2rem;gap:1rem;border-bottom:1px solid var(--border)}.nav-links.open{display:flex}.hamburger{display:block}.topic-grid{grid-template-columns:repeat(2,1fr)}}
+:root {
+  --ink: #1A1812;
+  --cream: #F6F1EB;
+  --warm-white: #FDFBF8;
+  --stone: #8B8578;
+  --pillar-steel: #B6C5D2;
+  --gold: #C8A96E;
+  --sand-dot: #A19578;
+  --blush: #E8DDD3;
+  --moss: #3D4A3A;
+
+  --bg: var(--cream);
+  --surface: var(--warm-white);
+  --surface2: #ffffff;
+  --border: var(--blush);
+  --text: var(--ink);
+  --muted: var(--stone);
+  --dim: var(--sand-dot);
+  
+  --accent: var(--pillar-steel);
+  --accent2: #9FB2C3;
+  --accent-dim: rgba(182, 197, 210, 0.3);
+
+  --font: 'Manrope', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --display: 'Cormorant', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 { font-family: var(--display); font-weight: 500; color: var(--text); }
+
+nav {
+  position: fixed; top: 0; width: 100%;
+  background: rgba(246, 241, 235, 0.93);
+  backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+  z-index: 100; padding: 0.75rem 2rem; display: flex;
+  justify-content: space-between; align-items: center;
+}
+.nav-logo { font-family: var(--display); font-size: 1.5rem; font-weight: 500; text-decoration: none; color: var(--text); letter-spacing: -0.02em; }
+.nav-logo span { color: var(--text); }
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { background: var(--accent) !important; color: var(--text) !important; padding: 0.4rem 1.25rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; }
+.hamburger { display: none; background: none; border: none; color: var(--text); font-size: 1.4rem; cursor: pointer; }
+
+section, .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+.section-label { font-family: var(--mono); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--stone); margin-bottom: 0.75rem; }
+
+.hero, .bundle-hero { padding: 8rem 2rem 4rem; text-align: center; max-width: 1000px; margin: 0 auto; }
+.hero h1, .bundle-hero h1 { font-size: 3.5rem; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+.hero h1 span, .bundle-hero h1 span { font-style: italic; font-weight: 300; color: var(--gold); }
+.hero .sub { color: var(--muted); font-size: 1.15rem; max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.6; font-weight: 400; }
+.hero-cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.bundle-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.7; max-width: 700px; margin: 0 auto 2rem; }
+
+.btn { display: inline-block; padding: 0.85rem 2.25rem; border-radius: 4px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; border: 1px solid transparent; cursor: pointer; }
+.btn-primary { background: var(--accent); color: var(--text); }
+.btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--muted); }
+.btn-free { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+.btn-free:hover { background: var(--border); }
+.btn-dim { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.btn-dim:hover { border-color: var(--muted); color: var(--text); }
+
+.stats, .bundle-stats { display: flex; justify-content: center; gap: 4rem; margin: 3rem 0; flex-wrap: wrap; }
+.stat, .bstat { text-align: center; }
+.stat-val, .bstat-val { font-family: var(--display); font-size: 2.5rem; font-weight: 400; color: var(--text); line-height: 1; }
+.stat-label, .bstat-label { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem; }
+
+.free-cta { text-align: center; margin: 2.5rem auto 1rem; padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; max-width: 600px; }
+.free-cta h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+.free-cta p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+
+.personas { padding: 4rem 0; }
+.persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.persona { background: var(--surface); border: 1px solid var(--border); padding: 2rem; }
+.persona-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+.persona h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+.persona p { font-size: 0.9rem; color: var(--muted); }
+.persona .highlight { font-family: var(--mono); font-size: 0.7rem; color: var(--text); background: var(--accent); padding: 0.2rem 0.5rem; display: inline-block; margin-top: 1rem; font-weight: 600; }
+
+.how { padding: 5rem 0; }
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.how-card { padding: 1.5rem; border-left: 1px solid var(--border); }
+.how-num { font-family: var(--display); font-size: 2rem; color: var(--text); margin-bottom: 0.5rem; line-height: 1; }
+.how-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+.how-card p { font-size: 0.9rem; color: var(--muted); }
+
+.features { padding: 4rem 0; }
+.feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+.feat { background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; }
+.feat h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+.feat h3::before { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--accent); margin-right: 0.5rem; vertical-align: middle; }
+.feat p { font-size: 0.9rem; color: var(--muted); }
+
+.topics { padding: 4rem 0; }
+.topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.5rem; margin-top: 2rem; }
+.topic-item { background: var(--surface); border: 1px solid var(--border); font-size: 0.9rem; cursor: pointer; transition: border-color 0.2s; }
+.topic-item:hover { border-color: var(--stone); }
+.topic-head { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1rem; font-weight: 500; }
+.topic-head .count { font-family: var(--mono); font-size: 0.75rem; color: var(--stone); }
+.topic-head::after { content: '+'; font-family: var(--mono); color: var(--stone); margin-left: 0.5rem; }
+.topic-item.open .topic-head::after { content: '−'; }
+.topic-packs { display: none; padding: 0 1rem 1rem; font-size: 0.85rem; color: var(--muted); }
+.topic-item.open .topic-packs { display: block; }
+.topic-packs span { display: block; padding: 0.2rem 0 0.2rem 0.75rem; border-left: 2px solid var(--border); margin-top: 0.25rem; }
+
+.demo, .sample-section { padding: 4rem 0; text-align: center; }
+.demo-frame { background: var(--surface); border: 1px solid var(--border); padding: 2.5rem; margin-top: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; text-align: left; }
+.demo-card, .sample-card { background: var(--surface2); border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1rem; cursor: pointer; position: relative; transition: border-color 0.2s; text-align: left; }
+.demo-card:hover, .sample-card:hover { border-color: var(--stone); }
+.demo-tag, .stag { font-family: var(--mono); font-size: 0.65rem; background: var(--accent-dim); color: var(--ink); padding: 0.2em 0.6em; position: absolute; top: 1rem; right: 1rem; }
+.demo-q, .sq { font-weight: 600; font-size: 1rem; padding-right: 3.5rem; }
+.demo-a, .sa { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.95rem; color: var(--muted); }
+.demo-code, .scode { font-family: var(--mono); font-size: 0.8rem; background: var(--moss); color: var(--cream); padding: 1rem; margin-top: 1rem; overflow-x: auto; white-space: pre; }
+.demo-card.open .demo-a, .sample-card.open .sa { display: block; }
+.demo-card::after, .sample-card::after { content: 'tap to flip'; font-family: var(--mono); font-size: 0.6rem; color: var(--dim); position: absolute; bottom: 0.6rem; right: 0.75rem; }
+.demo-card.open::after, .sample-card.open::after { content: ''; }
+.demo-hint { font-size: 0.75rem; color: var(--dim); margin-top: 1rem; }
+
+.pricing { padding: 5rem 0; }
+.pricing > h2 { text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; }
+.pricing > .sub { text-align: center; color: var(--muted); font-size: 1.05rem; margin-bottom: 3rem; }
+
+.bundle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+.bundle-card { background: var(--surface); border: 1px solid var(--border); padding: 2rem; position: relative; display: flex; flex-direction: column; transition: border-color 0.2s; }
+.bundle-card:hover { border-color: var(--stone); }
+.bundle-card.featured { border: 1px solid var(--stone); }
+.bundle-badge { position: absolute; top: -12px; right: 1.5rem; font-family: var(--mono); font-size: 0.65rem; background: var(--ink); color: var(--cream); padding: 0.3rem 0.8rem; font-weight: 700; text-transform: uppercase; }
+.bundle-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+.bundle-price { font-family: var(--display); font-size: 2.5rem; color: var(--text); margin-bottom: 1rem; }
+.bundle-price small { font-family: var(--font); font-size: 0.85rem; color: var(--muted); }
+.bundle-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.5; }
+.bundle-meta { font-family: var(--mono); font-size: 0.7rem; color: var(--stone); margin-bottom: 1.5rem; }
+.bundle-btn { display: block; text-align: center; padding: 0.75rem; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; border: 1px solid var(--border); color: var(--text); background: var(--surface2); }
+.bundle-btn-primary { background: var(--accent); color: var(--text); border: 1px solid transparent; }
+.bundle-btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.bundle-btn:hover { background: var(--border); }
+
+.pricing-box { background: var(--surface); border: 1px solid var(--border); padding: 2.5rem; margin-bottom: 3rem; }
+.pricing-box h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; text-align: center; }
+.pricing-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+.price-option { background: var(--surface2); border: 1px solid var(--border); padding: 1.5rem; text-align: center; transition: border-color 0.2s; }
+.price-option:hover { border-color: var(--stone); }
+.price-option.highlight { border-color: var(--stone); position: relative; }
+.price-option .po-label { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.25rem; }
+.price-option .po-price { font-family: var(--display); font-size: 2rem; color: var(--text); margin-bottom: 0.25rem; }
+.price-option .po-detail { font-size: 0.8rem; color: var(--muted); }
+.price-option .po-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 0.6rem; background: var(--ink); color: var(--cream); padding: 0.2em 0.8em; font-weight: 700; text-transform: uppercase; }
+
+.pack-list { display: grid; gap: 1rem; margin-bottom: 3rem; }
+.pack-card { background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; transition: border-color 0.2s; }
+.pack-card:hover { border-color: var(--stone); }
+.pack-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.pack-name { font-weight: 600; font-size: 1rem; }
+.pack-badge { font-family: var(--mono); font-size: 0.65rem; padding: 0.2em 0.6em; background: var(--accent-dim); color: var(--ink); }
+.pack-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+.pack-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+.pack-tag { font-family: var(--mono); font-size: 0.65rem; padding: 0.2em 0.6em; background: var(--surface2); color: var(--dim); }
+
+.faq { padding: 4rem 0; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; cursor: pointer; }
+.faq-q { font-weight: 600; font-size: 1rem; display: flex; justify-content: space-between; align-items: center; }
+.faq-q::after { content: '+'; font-family: var(--mono); color: var(--stone); font-size: 1.2rem; }
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-a { display: none; padding-top: 1rem; font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+.faq-item.open .faq-a { display: block; }
+
+footer { border-top: 1px solid var(--border); padding: 4rem 2rem; text-align: center; margin-top: 4rem; }
+.footer-content { max-width: 600px; margin: 0 auto; }
+.footer-links { margin: 2rem 0; display: flex; gap: 1.5rem; justify-content: center; }
+.footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid var(--border); padding-bottom: 2px; }
+.footer-links a:hover { color: var(--text); border-color: var(--stone); }
+.endorsement { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; width: 32px; height: 32px; }
+.pillar-square { background: var(--border); width: 100%; height: 100%; }
+.pillar-square.active { background: var(--accent); }
+.endorsement p { font-size: 0.8rem; color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+
+@media(max-width:700px){ .hero h1, .bundle-hero h1 { font-size: 2.8rem; } .how-grid, .persona-grid, .feat-grid, .pricing-options { grid-template-columns: 1fr; } .stats { gap: 2rem; } nav { padding: 0.75rem 1rem; } .nav-links { display: none; } .hamburger { display: block; } .bundle-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -51,15 +228,15 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 </nav>
 <div class="hero">
 <h1>Developer flashcards<br>that <span>stick</span></h1>
-<p class="sub">80 interactive flashcard packs with real code examples. Open in your browser, study offline, print for your desk. No app needed.</p>
+<p class="sub">82 interactive flashcard packs with real code examples. Open in your browser, study offline, print for your desk. No app needed.</p>
 <div class="hero-cta">
 <a href="#pricing" class="btn btn-primary">Browse Packs</a>
 <a href="packs/html/html_foundations_pack1.html" class="btn btn-free" download>Download Free Pack</a>
 </div>
 <div class="stats">
-<div class="stat"><div class="stat-val">80</div><div class="stat-label">Packs</div></div>
-<div class="stat"><div class="stat-val">1,600</div><div class="stat-label">Cards</div></div>
-<div class="stat"><div class="stat-val">30</div><div class="stat-label">Topics</div></div>
+<div class="stat"><div class="stat-val">82</div><div class="stat-label">Packs</div></div>
+<div class="stat"><div class="stat-val">1,640</div><div class="stat-label">Cards</div></div>
+<div class="stat"><div class="stat-val">32</div><div class="stat-label">Topics</div></div>
 <div class="stat"><div class="stat-val">100%</div><div class="stat-label">Offline</div></div>
 </div>
 </div>
@@ -67,9 +244,9 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 <div class="section-label">Who it's for</div>
 <h2 style="font-size:1.4rem;font-weight:700;">Built for developers at every stage</h2>
 <div class="persona-grid">
-<div class="persona"><div class="persona-icon">&#128300;</div><h3>Security professionals</h3><p>14 packs covering OWASP, pentesting, Active Directory, cloud security, forensics, and incident response. The most comprehensive cybersec flashcard suite available.</p><div class="highlight">14 PACKS / 280 CARDS</div></div>
+<div class="persona"><div class="persona-icon">&#128300;</div><h3>Security professionals</h3><p>15 packs covering OWASP, pentesting, Active Directory, cloud security, forensics, and incident response. The most comprehensive cybersec flashcard suite available.</p><div class="highlight">15 PACKS / 300 CARDS</div></div>
 <div class="persona"><div class="persona-icon">&#128187;</div><h3>Career switchers</h3><p>Interview prep bundle with DSA, system design, and behavioral frameworks. Plus full-stack coverage from HTML basics to Kubernetes.</p><div class="highlight">INTERVIEW PREP + FULL STACK</div></div>
-<div class="persona"><div class="persona-icon">&#9889;</div><h3>Senior devs filling gaps</h3><p>Picked up Go last month? Switching to Rust? Need a quick refresher on K8s networking? Grab just the packs you need.</p><div class="highlight">30 TOPICS / BUY ONLY WHAT YOU NEED</div></div>
+<div class="persona"><div class="persona-icon">&#9889;</div><h3>Senior devs filling gaps</h3><p>Picked up Go last month? Switching to Rust? Need a quick refresher on K8s networking? Grab just the packs you need.</p><div class="highlight">32 TOPICS / LICENSE ONLY WHAT YOU NEED</div></div>
 </div>
 </section>
 <section class="how" id="features">
@@ -165,35 +342,35 @@ fmt.Println(msg)</div></div></div>
 </section>
 <section class="pricing" id="pricing">
 <div class="section-label">Pricing</div>
-<h2>One purchase, study forever</h2>
-<p class="sub">No subscriptions. No recurring fees. Buy once, keep forever.</p>
+<h2>One license, study forever</h2>
+<p class="sub">License a pack you want to own (downloadable, works offline), or subscribe to explore the full catalog (streaming, non-downloadable).</p>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;max-width:700px;margin-left:auto;margin-right:auto;">
 <div class="bundle-card" style="text-align:center;padding:2rem;">
-<div class="bundle-name" style="font-size:1.1rem;">All-Access — 1 Year</div>
-<div class="bundle-price" style="font-size:2.2rem;">$99 <small>/year</small></div>
-<div class="bundle-desc">All 82 packs, 1,640 cards, 32 topics. Every new pack released in the next 12 months included.</div>
+<div class="bundle-name" style="font-size:1.1rem;">All-Access · Monthly</div>
+<div class="bundle-price" style="font-size:2.2rem;">€9 <small>/month</small></div>
+<div class="bundle-desc">Stream the full catalog via the web app. Non-downloadable. Cancel anytime.</div>
 <span class="bundle-btn" style="background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span>
 </div>
 <div class="bundle-card featured" style="text-align:center;padding:2rem;">
 <div class="bundle-badge">BEST VALUE</div>
-<div class="bundle-name" style="font-size:1.1rem;">All-Access — Lifetime</div>
-<div class="bundle-price" style="font-size:2.2rem;">$129 <small>one-time</small></div>
-<div class="bundle-desc">Every pack we make — now and forever. All current packs plus every future pack we ever release.</div>
+<div class="bundle-name" style="font-size:1.1rem;">All-Access · Annual</div>
+<div class="bundle-price" style="font-size:2.2rem;">€99 <small>/year</small></div>
+<div class="bundle-desc">€8.25 / month equivalent — 1 month free. Streaming access to the full catalog; non-downloadable.</div>
 <span class="bundle-btn" style="background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span>
 </div>
 </div>
 <h3 style="font-size:1rem;font-weight:600;margin-bottom:1rem;">Specialization bundles</h3>
 <div class="bundle-grid">
-<div class="bundle-card"><div class="bundle-name">Front End Engineer</div><div class="bundle-price">$49</div><div class="bundle-desc">HTML, CSS, JavaScript, React, TypeScript, Next.js, Tailwind, and Bootstrap — the complete frontend stack.</div><div class="bundle-meta">23 packs / 460 cards / HTML + PDF</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/frontend.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
-<div class="bundle-card"><div class="bundle-name">Security Engineer</div><div class="bundle-price">$39</div><div class="bundle-desc">OWASP, pentesting, AD attacks, cloud security, malware analysis, forensics, IR, OSINT, sandbox/virtualization, and more.</div><div class="bundle-meta">15 packs / 300 cards / HTML + PDF</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/security.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
-<div class="bundle-card"><div class="bundle-name">DevOps Engineer</div><div class="bundle-price">$29</div><div class="bundle-desc">Docker, Kubernetes, AWS, Linux administration, Git workflows, and CI/CD pipeline patterns.</div><div class="bundle-meta">12 packs / 240 cards / HTML + PDF</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/devops.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
-<div class="bundle-card"><div class="bundle-name">Back End Engineer</div><div class="bundle-price">$29</div><div class="bundle-desc">Node.js, Python, SQL, Docker, Testing, and API Design — server-side patterns with real code.</div><div class="bundle-meta">12 packs / 240 cards / HTML + PDF</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/backend.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
-<div class="bundle-card"><div class="bundle-name">Cloud / AWS Architect</div><div class="bundle-price">$24</div><div class="bundle-desc">AWS core services, Docker, Kubernetes, and Linux — CLI commands and architecture patterns.</div><div class="bundle-meta">8 packs / 160 cards / HTML + PDF</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/cloud.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
-<div class="bundle-card"><div class="bundle-name">Data Engineer</div><div class="bundle-price">$24</div><div class="bundle-desc">ETL/ELT, Apache Spark, dbt, SQL, Python, and Docker for data pipelines and warehousing.</div><div class="bundle-meta">6 packs / 120 cards / HTML + PDF</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/data.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
-<div class="bundle-card"><div class="bundle-name">Interview Prep</div><div class="bundle-price">$14</div><div class="bundle-desc">Data structures & algorithms, system design patterns, and behavioral interview frameworks.</div><div class="bundle-meta">3 packs / 60 cards / HTML + PDF</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/interview.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
-<div class="bundle-card"><div class="bundle-name">Mobile Developer</div><div class="bundle-price">$14</div><div class="bundle-desc">React Native, Swift/SwiftUI, and Kotlin/Jetpack Compose — cross-platform and native.</div><div class="bundle-meta">3 packs / 60 cards / HTML + PDF</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/mobile.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
-<div class="bundle-card"><div class="bundle-name">Game Developer</div><div class="bundle-price">$10</div><div class="bundle-desc">Unity/C# and Godot/GDScript — GameObjects, signals, physics, animation, AI patterns.</div><div class="bundle-meta">2 packs / 40 cards / HTML + PDF</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/gamedev.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
-<div class="bundle-card"><div class="bundle-name">Individual Pack</div><div class="bundle-price">$7 <small>each</small></div><div class="bundle-desc">Any single topic — 20 interactive flashcards with code examples + printable PDF.</div><div class="bundle-meta">1 pack / 20 cards / HTML + PDF</div><span class="bundle-btn" style="margin-top:1rem;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div>
+<div class="bundle-card"><div class="bundle-name">Front End Engineer</div><div class="bundle-price">€49</div><div class="bundle-desc">HTML, CSS, JavaScript, React, TypeScript, Next.js, Tailwind, and Bootstrap — the complete frontend stack.</div><div class="bundle-meta">23 packs · 460 cards · downloadable license + 12 mo updates</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/frontend.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
+<div class="bundle-card"><div class="bundle-name">Security Engineer</div><div class="bundle-price">€39</div><div class="bundle-desc">OWASP, pentesting, AD attacks, cloud security, malware analysis, forensics, IR, OSINT, sandbox/virtualization, and more.</div><div class="bundle-meta">15 packs · 300 cards · downloadable license + 12 mo updates</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/security.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
+<div class="bundle-card"><div class="bundle-name">DevOps Engineer</div><div class="bundle-price">€39</div><div class="bundle-desc">Docker, Kubernetes, AWS, Linux administration, Git workflows, and CI/CD pipeline patterns.</div><div class="bundle-meta">12 packs · 240 cards · downloadable license + 12 mo updates</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/devops.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
+<div class="bundle-card"><div class="bundle-name">Back End Engineer</div><div class="bundle-price">€39</div><div class="bundle-desc">Node.js, Python, SQL, Docker, Testing, and API Design — server-side patterns with real code.</div><div class="bundle-meta">12 packs · 240 cards · downloadable license + 12 mo updates</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/backend.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
+<div class="bundle-card"><div class="bundle-name">Cloud / AWS Architect</div><div class="bundle-price">€29</div><div class="bundle-desc">AWS core services, Docker, Kubernetes, and Linux — CLI commands and architecture patterns.</div><div class="bundle-meta">8 packs · 160 cards · downloadable license + 12 mo updates</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/cloud.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
+<div class="bundle-card"><div class="bundle-name">Data Engineer</div><div class="bundle-price">€24</div><div class="bundle-desc">ETL/ELT, Apache Spark, dbt, SQL, Python, and Docker for data pipelines and warehousing.</div><div class="bundle-meta">6 packs · 120 cards · downloadable license + 12 mo updates</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/data.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
+<div class="bundle-card"><div class="bundle-name">Interview Prep</div><div class="bundle-price">€29</div><div class="bundle-desc">Data structures & algorithms, system design patterns, and behavioral interview frameworks.</div><div class="bundle-meta">6 packs · 120 cards · downloadable license + 12 mo updates</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/interview.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
+<div class="bundle-card"><div class="bundle-name">Mobile Developer</div><div class="bundle-price">€29</div><div class="bundle-desc">React Native, Swift/SwiftUI, and Kotlin/Jetpack Compose — cross-platform and native.</div><div class="bundle-meta">6 packs · 120 cards · downloadable license + 12 mo updates</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/mobile.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
+<div class="bundle-card"><div class="bundle-name">Game Developer</div><div class="bundle-price">€29</div><div class="bundle-desc">Unity/C# and Godot/GDScript — GameObjects, signals, physics, animation, AI patterns.</div><div class="bundle-meta">5 packs · 100 cards · downloadable license + 12 mo updates</div><div style="display:flex;gap:.5rem;margin-top:1rem"><a href="bundles/gamedev.html" class="bundle-btn bundle-btn-ghost" style="flex:1">View Bundle</a><span class="bundle-btn" style="flex:1;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div></div>
+<div class="bundle-card"><div class="bundle-name">Individual Pack · License</div><div class="bundle-price">€7</div><div class="bundle-desc">Any single topic — 20 interactive flashcards with code examples + printable PDF.</div><div class="bundle-meta">1 pack · 20 cards · downloadable license + 12 mo updates</div><span class="bundle-btn" style="margin-top:1rem;background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span></div>
 </div>
 </section>
 <section class="faq" id="faq">
@@ -206,6 +383,26 @@ fmt.Println(msg)</div></div></div>
 <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What's your refund policy?</div><div class="faq-a">If you're not satisfied, contact us within 14 days for a full refund. No questions asked.</div></div>
 <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do I get updates?</div><div class="faq-a">The All-Access Bundle includes lifetime updates — when we release new packs, you get them. Individual packs and bundles receive content updates but don't include new packs outside your purchase.</div></div>
 </section>
-<footer>CodeFlash — Developer Flashcards That Stick<br><span style="margin-top:.5rem;display:inline-block;">Made in Austria. 82 packs. 1,640 cards. Zero tracking.</span><br><span style="margin-top:.75rem;display:inline-block;font-size:.7rem;color:var(--dim);">Built by <a href="https://lechnerstudios.at" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);">Websites by Lechner Studios</a></span></footer>
+<footer>
+  <div class="footer-content">
+    <h3 style="font-family: var(--display); font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 400; color: var(--text);">CodeFlash</h3>
+    <p style="font-size: 0.9rem; color: var(--muted);">Developer flashcards that stick.</p>
+    
+    <div class="footer-links">
+      <a href="legal/impressum.html">Impressum</a>
+      <a href="legal/datenschutz.html">Datenschutz</a>
+    </div>
+    
+    <div class="endorsement">
+      <div class="pillar-grid">
+        <div class="pillar-square" style="background: var(--blush)"></div>
+        <div class="pillar-square" style="background: var(--gold)"></div>
+        <div class="pillar-square" style="background: var(--sand-dot)"></div>
+        <div class="pillar-square active"></div>
+      </div>
+      <p>A Lechner Studios product</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

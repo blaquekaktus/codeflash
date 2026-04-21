@@ -1,6 +1,6 @@
 # CodeFlash — Developer Flashcards That Stick
 
-> **80+ interactive flashcard packs for developers and cybersecurity
+> **82 interactive flashcard packs for developers and cybersecurity
 > professionals. HTML + PDF. No app needed.**
 
 CodeFlash is spaced-repetition learning that fits in a browser tab.
@@ -36,6 +36,10 @@ Download [HTML Foundations](packs/html/html_foundations_pack1.html) —
 20 interactive flashcards covering tags, layout, semantic HTML, and
 accessibility. Includes quiz mode, category filters, and progress
 tracking. Works offline.
+
+Two more free samples live in [`packs/`](packs/):
+[Python Core Concepts](packs/python/python_core_concepts.html) and
+[Web Security: OWASP Top 10](packs/security/web_security_owasp.html).
 
 ---
 
@@ -73,8 +77,8 @@ Open the file in any modern browser. That's it.
 
 ## Pack Catalog
 
-The full catalog lives on the [public site](https://codeflash.at) and
-pack bundles are in [`bundles/`](bundles/). Categories include:
+The full catalog lives on the [public site](https://codeflash.lechner-studios.at)
+and pack bundles are in [`bundles/`](bundles/). Categories include:
 
 - **Web fundamentals** — HTML, CSS, JavaScript, accessibility
 - **Backend** — Node.js, Python, databases, APIs
@@ -116,8 +120,9 @@ Every CTA on this site lands there.
 | **codeflash** (this repo)                                                            | Public marketing, landing page, free samples  |
 | [flashcards-programming-app](https://github.com/blaquekaktus/flashcards-programming-app) | Product — engine, web app, storefront, auth   |
 
-Pack HTML is **authored in the product repo** and copied here —
-never re-author pack content in this repo.
+Pack HTML is **authored in the product repo** (at
+`public/packs/**`) and copied into this repo's `packs/` as
+marketing samples — never re-author pack content here.
 
 ---
 
@@ -127,19 +132,21 @@ never re-author pack content in this repo.
 codeflash/
 ├── index.html          # Landing page
 ├── packs/              # Free-sample pack HTML (copied from product repo)
-│   └── html/
-│       └── html_foundations_pack1.html
-├── bundles/            # Downloadable pack bundles (ZIP/PDF)
+│   ├── html/html_foundations_pack1.html
+│   ├── python/python_core_concepts.html
+│   └── security/web_security_owasp.html
+├── bundles/            # Bundle preview HTML pages (authored here)
+├── legal/              # Impressum + Datenschutz (AT, draft with noindex)
 ├── assets/             # Images, fonts, stylesheets
-├── scripts/            # Build/deploy scripts
-├── legal/              # Privacy, terms, imprint
+├── scripts/            # Layer 0 pre-commit hook
 ├── CLAUDE.md           # Agent instructions (Layer 0 + ecosystem + project rules)
 ├── GAPS.md             # Known gaps vs. canonical brief
 └── .layer0-allow       # Paths exempt from UID/unit Layer 0 scan
 ```
 
-No build step required — the site is static-deployable. Hosted on
-GitHub Pages or equivalent.
+No build step required — the site is static-deployable. Canonical
+host: **Netlify**, served at `https://codeflash.lechner-studios.at`
+(per ai-brain ADR-0008 + ecosystem hosting map, decided 2026-04-20).
 
 ---
 
@@ -163,14 +170,27 @@ Hot-reload is not required since there's no build step. Edit
 
 ## Design System
 
-| Token      | Value                      |
-| ---------- | -------------------------- |
-| Background | Near-black `#0F0F0F`       |
-| Accent 1   | Electric blue `#00D4FF`    |
-| Accent 2   | Electric green `#00FF88`   |
-| Text       | Off-white `#F5F5F5`        |
-| Font UI    | Inter                      |
-| Font code  | JetBrains Mono             |
+Canonical tokens (as implemented in `index.html`):
+
+| Token             | Value                       |
+| ----------------- | --------------------------- |
+| `--ink`           | `#1A1812`                   |
+| `--cream`         | `#F6F1EB`                   |
+| `--warm-white`    | `#FDFBF8`                   |
+| `--stone`         | `#8B8578`                   |
+| `--pillar-steel`  | `#B6C5D2` (accent)          |
+| `--gold`          | `#C8A96E`                   |
+| `--sand-dot`      | `#A19578`                   |
+| `--blush`         | `#E8DDD3`                   |
+| `--moss`          | `#3D4A3A`                   |
+| Font Display      | Cormorant                   |
+| Font UI           | Manrope                     |
+| Font Code         | JetBrains Mono              |
+
+The canonical spec lives in `ai-brain/design-system/` — this table
+mirrors what ships in `index.html`. If the spec and the shipped CSS
+ever disagree, update the spec first, then propagate per
+`CLAUDE.md` §Design system.
 
 Voice: insider / no-BS / evidence-first. Shared with
 [The AI Shortcut](https://github.com/blaquekaktus/automatedcontentcreator).
@@ -213,7 +233,8 @@ references only — no pop-ups, no ads.
 2. **No secrets in commits.** Analytics / payment / mailing keys live
    in `.env` and are `.gitignore`d.
 3. **Pack content is downstream of product.** Never edit pack HTML
-   here — edit in `flashcards-programming-app` and re-publish.
+   here — edit in `flashcards-programming-app` (`public/packs/**`)
+   and re-publish.
 4. **Accessibility is not optional.** WCAG 2.1 AA is the floor, not
    the target.
 5. **No hype language.** Enforced in the shared brand voice.

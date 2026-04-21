@@ -3,7 +3,7 @@
 Generated 2026-04-15 from a side-by-side profile of all 7 portfolio repos
 (ai-brain, automatedcontentcreator, flashcards-programming-app, websites,
 gute-haende-frontend, codeflash, vistera). Updated 2026-04-15 after the
-portfolio cleanup cycle.
+portfolio cleanup cycle. Further corrections 2026-04-21 (path + hosting).
 
 This file captures gaps that **only surface when comparing repos against
 each other**. Local content work is out of scope.
@@ -12,8 +12,17 @@ each other**. Local content work is out of scope.
 
 Static marketing/landing site (HTML only, no build) for the CodeFlash
 product. Pack HTML is **authored upstream** in
-`flashcards-programming-app/packs/` and copied into this repo's
-`bundles/`. Hosting: GitHub Pages.
+`flashcards-programming-app/public/packs/` and copied into this repo's
+`packs/` directory. (Corrected 2026-04-21: prior wording said
+`flashcards-programming-app/packs/` → `this repo's bundles/` — both
+were wrong. Product repo moved pack HTML to `public/packs/` in commit
+`871d4ce`; downstream copies land in `codeflash/packs/`. `bundles/`
+in this repo holds hand-authored bundle preview pages, not copies.)
+
+**Hosting.** Target host is **Netlify** per `ai-brain/decisions/0008-hosting-split-netlify-vercel.md` (static sites → Netlify); canonical URL
+`https://codeflash.lechner-studios.at/` per the ecosystem hosting map in
+`ai-brain/open-items.md` (decided 2026-04-20). README still says
+"GitHub Pages" — will be corrected.
 
 This is **not** a fork of the well-known `codeflash-ai/codeflash` Python
 optimizer, despite the matching name.
@@ -26,7 +35,16 @@ was deferred pending explicit path mapping from the owner ("which
 flashcards paths actually belong downstream"). Drift remains real —
 flashcards has incident reports about stalled pack-building sessions.
 
-**Status:** open, blocked on mapping.
+Path mapping clarified 2026-04-21: source is
+`flashcards-programming-app/public/packs/**`; downstream target is
+`codeflash/packs/<topic>/`. Allow-list for downstream copy is the
+free-sample subset (anything marked `is_free=true` in Supabase plus
+any explicitly-chosen marketing samples). Automation candidate:
+GitHub Action in product repo triggers on `public/packs/**` change,
+opens a sync PR here.
+
+**Status:** open. Unblocked on the mapping side; still needs the
+Action wired.
 
 ### 2. ~~Name collision with `flashcards-programming-app/package.json.name`~~ → **done**
 ✅ Upstream renamed to `flashcards-programming-app` in
@@ -35,6 +53,9 @@ flashcards has incident reports about stalled pack-building sessions.
 ### 3. ~~Pre-commit hook v2 missing~~ → **phase 1 done**
 ✅ `.layer0-allow` installed (PR #4).
 ❌ Hook script propagation blocked on ai-brain#13. Tracked in #5 here.
+
+Update 2026-04-21: phase 2 landed via PR #8 on 2026-04-15;
+`scripts/precommit-hook.sh` is the canonical source.
 
 ### 4. Three open `claude/*` branches duplicate work in websites and gute-haende
 Still open. `claudemd-drift-propagation-lBvaw`,
@@ -60,13 +81,14 @@ consume yet.
    ai-brain checklist.
 ❌ Placeholders not filled (business legal name, Firmenbuchnummer,
    contact email, processing-purpose blocks, cookie/tracking block,
-   etc.). Owner task before going live.
-❌ Footer link from `index.html` not yet added. Trivial follow-up:
-   add `<a href="legal/impressum.html">Impressum</a> ·
-   <a href="legal/datenschutz.html">Datenschutz</a>` to the existing
-   `<footer>`.
+   etc.). Owner task before going live — blocked on ai-brain P0
+   "Controller-identity decision" (natural person / Einzelunternehmen
+   / GmbH).
+❌ Footer link from `index.html` not yet added. Enumerated in
+   `docs/PATCHES_INDEX_HTML_2026-04-21.md` §3 — ready to apply.
 
-**Status:** scaffold rendered; wiring + real values pending.
+**Status:** scaffold rendered; footer-wiring enumerated; real values
+blocked on controller-identity P0 (see `ai-brain/backlog/INDEX.md`).
 
 ## New in this cycle (not in the original GAPS analysis)
 
@@ -74,11 +96,17 @@ consume yet.
 ✅ `.github/ISSUE_TEMPLATE/`, PR template, `.gitattributes`,
    `.github/workflows/file-size-guard.yml` (PR #6).
 
+### 8. Split-repo audit completed 2026-04-21
+See `docs/PROJECT_STATE_CODEFLASH_2026-04.md`. Decision recorded:
+**Path 2 — keep the split, wire Netlify Forms for lead capture,
+eliminate drift.** Resolves the P1 split-repo-audit row in
+`ai-brain/backlog/codeflash-flashcards.md`.
+
 ## Cross-repo roadmap (full list)
 
 See each sibling's `GAPS.md`. Items where this repo is critical path:
 
-- #9 (receive pack-sync PRs) — open, blocked on mapping
+- #9 (receive pack-sync PRs) — open, mapping now clear; needs Action
 - #8 (rename collision) — **done**
 
 ## Anti-scope

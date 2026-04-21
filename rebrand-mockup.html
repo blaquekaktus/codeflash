@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeFlash — Developer Flashcards That Stick</title>
+<meta name="description" content="82 interactive flashcard packs with real code examples. Open in your browser, study offline, print for your desk. No app needed.">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/logos/codeflash_logo_256.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/logos/codeflash_favicon_64.png">
+
+<!-- Google Fonts preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Lechner Studios v3 Palette */
+  --ink: #1A1812;
+  --cream: #F6F1EB;
+  --warm-white: #FDFBF8;
+  --stone: #8B8578;
+  --pillar-steel: #B6C5D2;
+  --gold: #C8A96E;
+  --sand-dot: #A19578;
+  --blush: #E8DDD3;
+  --moss: #3D4A3A;
+
+  /* Functional Roles (Light Mode) */
+  --bg: var(--cream);
+  --surface: var(--warm-white);
+  --surface-alt: #ffffff;
+  --border: var(--blush);
+  
+  --text: var(--ink);
+  --text-muted: var(--stone);
+  
+  --accent-bg: var(--pillar-steel);
+  --accent-text: var(--ink);
+  --accent-hover: #9FB2C3;
+  --accent-dim: rgba(182, 197, 210, 0.3);
+
+  /* Typography */
+  --font-display: 'Cormorant', serif;
+  --font-body: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(246, 241, 235, 0.93);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 0.75rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: var(--text);
+}
+.nav-cta {
+  background: var(--accent-bg) !important;
+  color: var(--accent-text) !important;
+  padding: 0.4rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* Base Sections */
+section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sand-dot);
+  margin-bottom: 0.75rem;
+}
+
+/* Hero */
+.hero {
+  padding: 10rem 2rem 4rem;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.hero h1 {
+  font-size: 4rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+.hero h1 span {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+}
+.hero .sub {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  max-width: 580px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.hero-cta {
+  display: inline-flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2.25rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--accent-bg);
+  color: var(--accent-text);
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--text-muted);
+}
+.btn-free {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.btn-free:hover {
+  background: var(--border);
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin: 4rem 0;
+  flex-wrap: wrap;
+}
+.stat {
+  text-align: center;
+}
+.stat-val {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+}
+
+/* Personas */
+.personas { padding: 5rem 0; }
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.persona {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+.persona-icon {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+.persona h3 {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.persona p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.persona .highlight {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink);
+  background: var(--accent-bg);
+  padding: 0.2rem 0.5rem;
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* How it works */
+.how { padding: 5rem 0; }
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.how-card {
+  padding: 1.5rem;
+  border-left: 1px solid var(--border);
+}
+.how-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--accent-bg);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+.how-card h3 {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.how-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Topics Grid */
+.topics { padding: 5rem 0; }
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+.topic-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.topic-item:hover { border-color: var(--stone); }
+.topic-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  font-weight: 500;
+}
+.topic-head .count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--stone);
+}
+.topic-head::after {
+  content: '+';
+  font-family: var(--font-mono);
+  color: var(--stone);
+  margin-left: 0.5rem;
+}
+.topic-item.open .topic-head::after { content: '−'; }
+.topic-packs {
+  display: none;
+  padding: 0 1rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.topic-item.open .topic-packs { display: block; }
+.topic-packs span {
+  display: block;
+  padding: 0.2rem 0 0.2rem 0.75rem;
+  border-left: 2px solid var(--border);
+  margin-top: 0.25rem;
+}
+
+/* Demo Section */
+.demo { padding: 5rem 0; text-align: center; }
+.demo-frame {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  margin-top: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.demo-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.demo-card:hover { border-color: var(--stone); }
+.demo-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  background: var(--accent-dim);
+  color: var(--ink);
+  padding: 0.2em 0.6em;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.demo-q {
+  font-weight: 600;
+  font-size: 1rem;
+  padding-right: 3.5rem;
+}
+.demo-a {
+  display: none;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+.demo-code {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--moss);
+  color: var(--cream);
+  padding: 1rem;
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+.demo-card.open .demo-a { display: block; }
+
+/* Pricing */
+.pricing { padding: 5rem 0; }
+.pricing > h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.pricing > .sub {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 3rem;
+}
+.bundle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.bundle-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.bundle-card.featured {
+  border: 1px solid var(--stone);
+}
+.bundle-badge {
+  position: absolute;
+  top: -12px;
+  right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 0.3rem 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.bundle-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.bundle-price {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.bundle-price small {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.bundle-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+.bundle-meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--stone);
+  margin-bottom: 1.5rem;
+}
+.bundle-btn {
+  display: block;
+  text-align: center;
+  padding: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--surface-alt);
+}
+.bundle-btn:hover {
+  background: var(--border);
+}
+
+/* Footer & Endorsement */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.footer-links {
+  margin: 2rem 0;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.footer-links a:hover {
+  color: var(--text);
+}
+
+/* Pillar Card Endorsement */
+.endorsement {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  width: 32px;
+  height: 32px;
+}
+.pillar-square {
+  background: var(--border);
+  width: 100%;
+  height: 100%;
+}
+.pillar-square.active {
+  background: var(--accent-bg);
+}
+.endorsement p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+@media(max-width:700px){
+  .hero h1 { font-size: 2.8rem; }
+  .how-grid, .persona-grid { grid-template-columns: 1fr; }
+  .stats { gap: 2rem; }
+  nav { padding: 0.75rem 1rem; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .bundle-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">CodeFlash</div>
+  <button class="hamburger">&#9776;</button>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#topics">Topics</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#pricing" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Developer flashcards<br><span>that stick.</span></h1>
+  <p class="sub">82 interactive flashcard packs with real code examples. Open in your browser, study offline, print for your desk. No app needed.</p>
+  <div class="hero-cta">
+    <a href="#pricing" class="btn btn-primary">Browse Packs</a>
+    <a href="#demo" class="btn btn-ghost">Try Demo</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-val">82</div><div class="stat-label">Packs</div></div>
+    <div class="stat"><div class="stat-val">1,640</div><div class="stat-label">Cards</div></div>
+    <div class="stat"><div class="stat-val">32</div><div class="stat-label">Topics</div></div>
+  </div>
+</div>
+
+<section class="personas">
+  <div class="section-label">Who it's for</div>
+  <h2>Built for developers at every stage</h2>
+  <div class="persona-grid">
+    <div class="persona">
+      <h3>Security Professionals</h3>
+      <p>15 packs covering OWASP, pentesting, Active Directory, cloud security, forensics, and IR. The most comprehensive cybersec suite available.</p>
+      <div class="highlight">15 PACKS</div>
+    </div>
+    <div class="persona">
+      <h3>Career Switchers</h3>
+      <p>Interview prep bundle with DSA, system design, and behavioral frameworks. Plus full-stack coverage from HTML to Kubernetes.</p>
+      <div class="highlight">FULL STACK</div>
+    </div>
+    <div class="persona">
+      <h3>Senior Devs</h3>
+      <p>Picked up Go last month? Switching to Rust? Need a quick K8s refresher? License just the packs you need.</p>
+      <div class="highlight">32 TOPICS</div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="demo">
+  <div class="section-label">Try it</div>
+  <h2>See how CodeFlash cards work</h2>
+  <div class="demo-frame">
+    <div class="demo-card" onclick="this.classList.toggle('open')">
+      <span class="demo-tag">concurrency</span>
+      <div class="demo-q">How do goroutines and channels work in Go?</div>
+      <div class="demo-a">
+        Goroutines are lightweight threads launched with the <code>go</code> keyword. Channels are typed conduits for communication.
+        <div class="demo-code">ch := make(chan string)
+
+go func() {
+    ch <- "hello"  // send
+}()
+
+msg := <-ch  // receive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="section-label">Pricing</div>
+  <h2>One license, study forever</h2>
+  <p class="sub">Own the packs (offline HTML + PDF) or stream the full catalog.</p>
+  
+  <div class="bundle-grid">
+    <div class="bundle-card featured">
+      <div class="bundle-badge">Best Value</div>
+      <div class="bundle-name">All-Access Annual</div>
+      <div class="bundle-price">€99 <small>/year</small></div>
+      <div class="bundle-desc">Streaming access to the full 82-pack catalog via the web app.</div>
+      <a href="#" class="bundle-btn">Store Opening Soon</a>
+    </div>
+    <div class="bundle-card">
+      <div class="bundle-name">Front End Engineer</div>
+      <div class="bundle-price">€49</div>
+      <div class="bundle-desc">HTML, CSS, JS, React, TS, Next.js, Tailwind. Offline license.</div>
+      <div class="bundle-meta">23 packs · 460 cards</div>
+      <a href="#" class="bundle-btn">Store Opening Soon</a>
+    </div>
+    <div class="bundle-card">
+      <div class="bundle-name">Security Engineer</div>
+      <div class="bundle-price">€39</div>
+      <div class="bundle-desc">OWASP, pentesting, AD attacks, forensics, IR. Offline license.</div>
+      <div class="bundle-meta">15 packs · 300 cards</div>
+      <a href="#" class="bundle-btn">Store Opening Soon</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 400;">CodeFlash</h3>
+    <p style="font-size: 0.9rem; color: var(--text-muted);">Developer flashcards that stick.</p>
+    
+    <div class="footer-links">
+      <a href="legal/impressum.html">Impressum</a>
+      <a href="legal/datenschutz.html">Datenschutz</a>
+    </div>
+    
+    <div class="endorsement">
+      <div class="pillar-grid">
+        <div class="pillar-square" style="background: var(--blush)"></div>
+        <div class="pillar-square" style="background: var(--gold)"></div>
+        <div class="pillar-square" style="background: var(--sand-dot)"></div>
+        <div class="pillar-square active"></div>
+      </div>
+      <p>A Lechner Studios product</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Simple interactions for the prototype
+  document.querySelectorAll('.topic-item').forEach(item => {
+    item.addEventListener('click', () => item.classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>

@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Engineer Bundle — CodeFlash</title>
-<meta name="description" content="6 flashcard packs, 120 cards. Build and scale data pipelines. From ETL/ELT patterns to Apache Spark, dbt models, dimensional modeling, and streaming w">
-<link rel="icon" type="image/png" sizes="64x64" href="../assets/logos/codeflash_favicon_64.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+import os
+import glob
+import re
+
+FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">"""
+
+NEW_CSS = """<style>
 :root {
   --ink: #1A1812;
   --cream: #F6F1EB;
@@ -201,100 +198,16 @@ footer { border-top: 1px solid var(--border); padding: 4rem 2rem; text-align: ce
 .endorsement p { font-size: 0.8rem; color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
 
 @media(max-width:700px){ .hero h1, .bundle-hero h1 { font-size: 2.8rem; } .how-grid, .persona-grid, .feat-grid, .pricing-options { grid-template-columns: 1fr; } .stats { gap: 2rem; } nav { padding: 0.75rem 1rem; } .nav-links { display: none; } .hamburger { display: block; } .bundle-grid { grid-template-columns: 1fr; } }
-</style>
-</head>
-<body>
-<nav><a class="nav-logo" href="../index.html">Code<span>Flash</span></a><div class="nav-links"><a href="../index.html#topics">Topics</a><a href="../index.html#pricing">All Bundles</a><a href="../index.html#pricing" class="nav-cta">View Pricing</a></div></nav>
-<div class="container">
-<div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#pricing">Bundles</a> / Data Engineer</div>
-<div class="bundle-hero">
-<h1>📊 Data Engineer <span>Bundle</span></h1>
-<div class="bundle-stats">
-<div class="bstat"><div class="bstat-val">6</div><div class="bstat-label">Packs</div></div>
-<div class="bstat"><div class="bstat-val">120</div><div class="bstat-label">Cards</div></div>
-<div class="bstat"><div class="bstat-val">4</div><div class="bstat-label">Topics</div></div>
-<div class="bstat"><div class="bstat-val">HTML+PDF</div><div class="bstat-label">Format</div></div>
-</div>
-<div class="bundle-desc">Build and scale data pipelines. From ETL/ELT patterns to Apache Spark, dbt models, dimensional modeling, and streaming with Kafka. Includes SQL mastery (joins through window functions), Python fundamentals, and Docker for containerized pipelines.</div>
-<div class="cta-row">
-<span class="btn" style="background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span><!--  — $24</a>
-<span class="btn btn-dim" style="cursor:default;opacity:0.5">All-Access — $129</span>
-</div>
-</div>
-<div class="section-label">What's included</div>
-<h2>6 packs, 120 cards</h2>
-<div class="pack-list"><div class="pack-card">
-<div class="pack-header"><span class="pack-name">Data Engineering — ETL, Spark & dbt</span><span class="pack-badge">20 cards</span></div>
-<div class="pack-desc">ETL vs ELT, Spark DataFrames, dbt models, Airflow DAGs, medallion architecture, Kafka, data quality.</div>
-<div class="pack-tags"><span class="pack-tag">spark</span><span class="pack-tag">dbt</span><span class="pack-tag">airflow</span></div>
-</div>
-<div class="pack-card">
-<div class="pack-header"><span class="pack-name">SQL — Fundamentals & Queries</span><span class="pack-badge">20 cards</span></div>
-<div class="pack-desc">SELECT, WHERE, GROUP BY, aggregates, INSERT/UPDATE/DELETE.</div>
-<div class="pack-tags"><span class="pack-tag">select</span><span class="pack-tag">aggregates</span></div>
-</div>
-<div class="pack-card">
-<div class="pack-header"><span class="pack-name">SQL — Joins & Window Functions</span><span class="pack-badge">20 cards</span></div>
-<div class="pack-desc">INNER/LEFT/RIGHT joins, CTEs, ROW_NUMBER, RANK, LAG/LEAD.</div>
-<div class="pack-tags"><span class="pack-tag">joins</span><span class="pack-tag">cte</span><span class="pack-tag">window</span></div>
-</div>
-<div class="pack-card">
-<div class="pack-header"><span class="pack-name">SQL — Optimization & Admin</span><span class="pack-badge">20 cards</span></div>
-<div class="pack-desc">Indexing, EXPLAIN plans, transactions, ACID, normalization.</div>
-<div class="pack-tags"><span class="pack-tag">indexes</span><span class="pack-tag">explain</span></div>
-</div>
-<div class="pack-card">
-<div class="pack-header"><span class="pack-name">Python — Core Concepts</span><span class="pack-badge">20 cards</span></div>
-<div class="pack-desc">Types, comprehensions, OOP, generators, dataclasses, type hints.</div>
-<div class="pack-tags"><span class="pack-tag">python</span><span class="pack-tag">oop</span></div>
-</div>
-<div class="pack-card">
-<div class="pack-header"><span class="pack-name">Docker — Fundamentals</span><span class="pack-badge">20 cards</span></div>
-<div class="pack-desc">Containers, Dockerfile, volumes, networking for pipeline deployment.</div>
-<div class="pack-tags"><span class="pack-tag">docker</span><span class="pack-tag">containers</span></div>
-</div>
-</div>
-<div class="section-label">Sample cards</div>
-<h2>Try before you buy</h2>
-<div class="sample-section"><div class="sample-card" onclick="this.classList.toggle('open')">
-<span class="stag">dbt</span>
-<div class="sq">What are incremental models in dbt?</div>
-<div class="sa">Process only new/changed data instead of rebuilding the full table. Use is_incremental() macro with a timestamp filter.<div class="scode">{{ config(materialized='incremental', unique_key='event_id') }}
-SELECT * FROM {{ source('raw', 'events') }}
-{% if is_incremental() %}
-  WHERE created_at > (SELECT MAX(created_at) FROM {{ this }})
-{% endif %}</div></div>
-</div>
-<div class="sample-card" onclick="this.classList.toggle('open')">
-<span class="stag">spark</span>
-<div class="sq">How does Spark handle partitioning?</div>
-<div class="sa">Partitions split data across executors. Minimize shuffles with broadcast joins and partition-by-key. Coalesce reduces partitions without shuffle.<div class="scode">df = df.repartition(200, "user_id")  # shuffle
-df = df.coalesce(10)                 # no shuffle
-result = big_df.join(broadcast(small_df), "key")</div></div>
-</div>
-</div>
-<div class="section-label">Ways to get this bundle</div>
-<div class="pricing-box">
-<h3>Choose how you'd like to study</h3>
-<div class="pricing-options">
-<div class="price-option"><div class="po-label">Individual Pack</div><div class="po-price">€7</div><div class="po-detail">Any single pack. 20 cards, HTML + PDF.</div></div>
-<div class="price-option highlight"><div class="po-badge">THIS BUNDLE</div><div class="po-label">Data Engineer</div><div class="po-price">€24</div><div class="po-detail">All 6 packs. 120 cards. Save $18 vs individual.</div></div>
-<div class="price-option"><div class="po-label">All-Access (Monthly)</div><div class="po-price">€9</div><div class="po-detail">Stream via web app. Non-downloadable.</div></div>
-<div class="price-option"><div class="po-label">All-Access (Annual)</div><div class="po-price">€99</div><div class="po-detail">Stream via web app. Non-downloadable.</div></div>
-</div></div>
-<div class="cta-row" style="justify-content:center;">
-<span class="btn" style="background:var(--surface2);color:var(--dim);cursor:default;border:1px solid var(--border)">Store Opening Soon</span>
-<a href="../index.html#pricing" class="btn btn-ghost">View All Bundles</a>
-</div>
-</div>
-<footer>
+</style>"""
+
+NEW_FOOTER = """<footer>
   <div class="footer-content">
     <h3 style="font-family: var(--display); font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 400; color: var(--text);">CodeFlash</h3>
     <p style="font-size: 0.9rem; color: var(--muted);">Developer flashcards that stick.</p>
     
     <div class="footer-links">
-      <a href="../legal/impressum.html">Impressum</a>
-      <a href="../legal/datenschutz.html">Datenschutz</a>
+      <a href="legal/impressum.html">Impressum</a>
+      <a href="legal/datenschutz.html">Datenschutz</a>
     </div>
     
     <div class="endorsement">
@@ -307,5 +220,30 @@ result = big_df.join(broadcast(small_df), "key")</div></div>
       <p>A Lechner Studios product</p>
     </div>
   </div>
-</footer>
-</body></html>
+</footer>"""
+
+NEW_FOOTER_BUNDLE = NEW_FOOTER.replace('href="legal/', 'href="../legal/')
+
+html_files = glob.glob("**/*.html", recursive=True)
+
+for file_path in html_files:
+    if "rebrand-mockup.html" in file_path:
+        continue
+        
+    with open(file_path, "r", encoding="utf-8") as f:
+        content = f.read()
+        
+    # Replace google fonts
+    content = re.sub(r'<link href="https://fonts\.googleapis\.com.*?rel="stylesheet">', FONTS, content)
+    
+    # Replace style block
+    content = re.sub(r'<style>.*?</style>', NEW_CSS, content, flags=re.DOTALL)
+    
+    # Replace footer
+    footer_to_use = NEW_FOOTER_BUNDLE if ("bundles\\" in file_path or "legal\\" in file_path) else NEW_FOOTER
+    content = re.sub(r'<footer>.*?</footer>', footer_to_use, content, flags=re.DOTALL)
+    
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(content)
+        
+print("Successfully applied rebrand to all HTML files.")

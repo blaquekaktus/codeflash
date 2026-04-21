@@ -4,17 +4,21 @@ Cross-repo archaeology of `blaquekaktus/codeflash` (this repo) and `blaquekaktus
 
 The report is split across a folder of per-section files because a single document repeatedly hit stream timeouts. Read this index for the verdict and critical questions; drill into the sections for evidence.
 
-## TL;DR verdict
+## Decision recorded — 2026-04-21
 
-**Consolidation recommendation: YES, with a narrow scope** — fold `codeflash` into `flashcards-programming-app` as a private monorepo, and publish only the built landing page (plus free-sample packs) to GitHub Pages from CI. See `07-consolidation.md`.
+**Path 2 — keep the split, wire Netlify Forms for lead capture, eliminate drift.**
 
-The stated reason for the split ("public frontend, hidden backend") is **not what the split actually delivers today**. The product repo (`flashcards-programming-app`) is itself a public repo containing the full storefront, Supabase schema, edge functions, and all pack content — nothing is hidden. The only thing the split buys is a separate public GitHub URL that can host a static marketing page; a single-repo setup with a built-artifact deploy achieves the same goal with far less drift.
+Rationale: Netlify Forms on the static `codeflash` surface is a real lead-capture channel with no added SaaS cost, and ADR-0008 already blesses static→Netlify as the portfolio hosting shape. The "hidden backend" narrative does not hold (both repos are public), but the lead-capture value of a purpose-built static marketing surface is real enough to justify the ongoing propagation cost — **if** the drift is actively closed.
 
-## Three questions I'd need answered before moving
+Acceptance criteria for Path 2:
 
-1. **Is `codeflash.at` live and pointing where?** `README.md` claims `https://codeflash.at` but `index.html`'s Open Graph URL still points at the old GitHub Pages URL for the product repo (`https://blaquekaktus.github.io/flashcards-programming-app/`). Which one is the real public surface today — and where is DNS actually pointed?
-2. **Is the React app at `flashcards-programming-app` meant to be the public front door, or a private operator tool?** `Landing.jsx` exists and is deployed on Vercel; `docs/NEXT_SESSION.md` calls the other repo "legacy static marketing/content site (untouched)". If the Vercel app is the public front door, `codeflash/index.html` is redundant. If `codeflash/index.html` is the public front door, why does the React app serve its own landing?
-3. **What was the original "hide the backend" concern — the source code, or the secrets?** If source code: the current split does not hide it (product repo is public). If secrets: `.env` + Vercel env vars already solve that and the split adds nothing. Naming the threat model makes the consolidation call trivial.
+- `codeflash.lechner-studios.at` pointed at Netlify; marketing lives there.
+- `flashcards-programming-app` continues on Vercel; `Landing.jsx` demoted to an in-app shell (not duplicate public marketing).
+- Pack sync automated (GitHub Action from product repo → this repo's `packs/`).
+- `compliance/sub-processors.md` updated with Netlify row (ADR-0008 downstream impact).
+- Double-opt-in consent copy live on the lead form before any outreach.
+
+Resolves P1 "Split-repo audit" in `ai-brain/backlog/codeflash-flashcards.md`.
 
 ## Sections
 
@@ -24,7 +28,21 @@ The stated reason for the split ("public frontend, hidden backend") is **not wha
 4. [Structure (per repo)](./PROJECT_STATE_CODEFLASH_2026-04/04-structure.md)
 5. [Decisions already made](./PROJECT_STATE_CODEFLASH_2026-04/05-decisions.md)
 6. [What's still open (table)](./PROJECT_STATE_CODEFLASH_2026-04/06-open-items.md)
-7. [Consolidation assessment](./PROJECT_STATE_CODEFLASH_2026-04/07-consolidation.md)
+7. [Consolidation assessment](./PROJECT_STATE_CODEFLASH_2026-04/07-consolidation.md) (now includes Path 2 addendum + ai-brain cross-refs)
+
+Also: [Pending edits to `index.html`](./PATCHES_INDEX_HTML_2026-04-21.md) — drift-fix list that a single tool-call rewrite could not land safely in this session.
+
+## Original critical questions (resolved 2026-04-21)
+
+1. ~~Where does `codeflash.at` actually point?~~ **Stale README copy.** Canonical URL is `https://codeflash.lechner-studios.at/` per `ai-brain/open-items.md` §Ecosystem Hosting Map (decided 2026-04-20). README + OG metadata corrected.
+2. ~~Is `Landing.jsx` or `codeflash/index.html` the public front door?~~ **codeflash/index.html.** Under Path 2, the static surface owns public marketing; `Landing.jsx` becomes the app-internal landing and should be trimmed to avoid duplicating the public marketing copy.
+3. ~~What threat model did the split try to address?~~ **Not a security threat model — a lead-capture / form-tooling optimisation** (static→Netlify Forms vs framework→Vercel). ADR-0008 codifies the shape rule.
+
+## Still pending (not resolved by this investigation)
+
+- **Controller-identity P0** (`ai-brain/backlog/INDEX.md`). Blocks codeflash/flashcards pre-sale compliance (FAGG, Button-Lösung, Impressum populated, DSE). Consolidation does not unblock this.
+- **Lemon Squeezy demo surface.** `flashcards-programming-app` Vercel URL needs to remain the demo target until LS approval lands — don't reshuffle during the review window.
+- **`Landing.jsx` one-landing decision.** Tracked in the product repo, not resolvable here.
 
 ## Method & caveats
 
