@@ -180,8 +180,9 @@ Cluster-detection questions for every visitor/prospect interaction:
 ## Financial & Operational Guardrails
 
 - **Pre-revenue projects:** organic/free channels only. Zero paid spend.
-- **Spending ceiling:** 25% of ACCRUED revenue (cash-in-hand, not
-  projected). Values in units. Tracked in
+- **Spending ceiling:** Tiered model (see `ai-brain/revenue/ceilings.md`).
+  Pre-revenue = 2.000 units bootstrap; then 50%/25%/10% as revenue
+  grows. Values in units. Tracked in
   `ai-brain/revenue/ceilings.md`.
 - **Autonomous ad spend** requires segment-benchmarked conversion
   projection (market data × 0.6 newcomer credibility factor). A/B test
