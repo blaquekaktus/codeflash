@@ -174,16 +174,18 @@ Canonical tokens (as implemented in `index.html`):
 
 | Token             | Value                       |
 | ----------------- | --------------------------- |
-| Background `--bg` | `#0B0D11` (near-black)      |
-| Surface           | `#13161E`                   |
-| Accent            | `#5BF0A5` (electric green)  |
-| Accent 2 (hover)  | `#3DD68C`                   |
-| Secondary         | `#5B9DF0` (electric blue)   |
-| Warn              | `#F0C05B`                   |
-| Text              | `#E8E6E1` (off-white)       |
-| Muted             | `#8B8D95`                   |
-| Font UI           | Inter                       |
-| Font code         | JetBrains Mono              |
+| `--ink`           | `#1A1812`                   |
+| `--cream`         | `#F6F1EB`                   |
+| `--warm-white`    | `#FDFBF8`                   |
+| `--stone`         | `#8B8578`                   |
+| `--pillar-steel`  | `#B6C5D2` (accent)          |
+| `--gold`          | `#C8A96E`                   |
+| `--sand-dot`      | `#A19578`                   |
+| `--blush`         | `#E8DDD3`                   |
+| `--moss`          | `#3D4A3A`                   |
+| Font Display      | Cormorant                   |
+| Font UI           | Manrope                     |
+| Font Code         | JetBrains Mono              |
 
 The canonical spec lives in `ai-brain/design-system/` — this table
 mirrors what ships in `index.html`. If the spec and the shipped CSS
