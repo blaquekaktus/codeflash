@@ -29,12 +29,7 @@ optimizer, despite the matching name.
 
 ## codeflash's slice of the cross-repo backlog
 
-### 1. Manual pack copy from `flashcards-programming-app` is a real landmine
-Pack HTML still hand-copied from the product repo. The sync workflow
-was deferred pending explicit path mapping from the owner ("which
-flashcards paths actually belong downstream"). Drift remains real —
-flashcards has incident reports about stalled pack-building sessions.
-
+### 1. ~~Manual pack copy from `flashcards-programming-app`~~ → **partially resolved**
 Path mapping clarified 2026-04-21: source is
 `flashcards-programming-app/public/packs/**`; downstream target is
 `codeflash/packs/<topic>/`. Allow-list for downstream copy is the
@@ -43,8 +38,18 @@ any explicitly-chosen marketing samples). Automation candidate:
 GitHub Action in product repo triggers on `public/packs/**` change,
 opens a sync PR here.
 
-**Status:** open. Unblocked on the mapping side; still needs the
-Action wired.
+**Update 2026-04-16 (bundle side resolved):** upstream build script
+fixed (flashcards-programming-app PR #19; was pointing at stale
+`../packs`, script didn't run at all). Owner confirmed 15 bundle ZIPs
+now build cleanly from 82 source packs via
+`bash engine/build_bundles.sh`. Old stale `FLASHCARDS_TOTAL/` folder
+(manual assembly from Apr 10) deleted — fully regenerable. Bundle
+ZIPs are gitignored in flashcards and distribute via Supabase Storage
+/ Gumroad — **not committed to codeflash**. This sync item applies
+ONLY to the free-sample HTML subset for the marketing-site preview.
+
+**Status:** mapping clear; upstream build fixed; bundle-side resolved.
+Remaining: wire the GitHub Action for free-sample HTML sync.
 
 ### 2. ~~Name collision with `flashcards-programming-app/package.json.name`~~ → **done**
 ✅ Upstream renamed to `flashcards-programming-app` in
@@ -106,7 +111,8 @@ eliminate drift.** Resolves the P1 split-repo-audit row in
 
 See each sibling's `GAPS.md`. Items where this repo is critical path:
 
-- #9 (receive pack-sync PRs) — open, mapping now clear; needs Action
+- #9 (pack-sync) — **partially resolved**: bundle zips handled
+  upstream via build + storage; free-sample HTML sync Action still TODO
 - #8 (rename collision) — **done**
 
 ## Anti-scope
