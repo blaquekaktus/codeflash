@@ -11,7 +11,7 @@
 <!-- Google Fonts preconnect for performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;700&family=Italiana&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -514,36 +514,52 @@ footer {
   color: var(--text);
 }
 
-/* Pillar Card Endorsement */
-.endorsement {
+/* LS endorsement stamp v4.1 — hardcoded Alpine pillar palette + Cormorant/Italiana wordmark.
+   Values are intentionally NOT tied to product CSS tokens (per brand v4.1 spec section 4.3 / 8.4.1). */
+.ls-endorsement-stamp {
   margin-top: 4rem;
   padding-top: 3rem;
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 12px;
 }
-.pillar-grid {
+.ls-endorsement-stamp .ls-pillar-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  width: 32px;
-  height: 32px;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  width: 28px;
+  height: 28px;
 }
-.pillar-square {
-  background: var(--border);
-  width: 100%;
-  height: 100%;
+.ls-endorsement-stamp .ls-pillar-grid > div {
+  border-radius: 1px;
 }
-.pillar-square.active {
-  background: var(--accent-bg);
+.ls-endorsement-stamp .ls-wordmark {
+  font-family: 'Cormorant', serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: -0.025em;
+  color: #1A1812;
+  line-height: 1;
+  white-space: nowrap;
 }
-.endorsement p {
+.ls-endorsement-stamp .ls-wordmark .ls-dot {
+  color: #B8944D;
+  font-family: 'Italiana', serif;
+  font-weight: 400;
+}
+.ls-endorsement-stamp .ls-wordmark .ls-studios {
+  font-family: 'Italiana', serif;
+  font-weight: 400;
+}
+.ls-endorsement-stamp .ls-attribution {
   font-size: 0.8rem;
   color: var(--text-muted);
   font-weight: 500;
   letter-spacing: 0.02em;
+  margin: 0;
 }
 
 @media(max-width:700px){
@@ -667,14 +683,15 @@ msg := <-ch  // receive</div>
       <a href="legal/datenschutz.html">Datenschutz</a>
     </div>
     
-    <div class="endorsement">
-      <div class="pillar-grid">
-        <div class="pillar-square" style="background: var(--blush)"></div>
-        <div class="pillar-square" style="background: var(--gold)"></div>
-        <div class="pillar-square" style="background: var(--sand-dot)"></div>
-        <div class="pillar-square active"></div>
+    <div class="ls-endorsement-stamp">
+      <div class="ls-pillar-grid">
+        <div style="background:#D6CDBE"></div>
+        <div style="background:#8FA8C5"></div>
+        <div style="background:#254268"></div>
+        <div style="background:#5E8263"></div>
       </div>
-      <p>A Lechner Studios product</p>
+      <span class="ls-wordmark">lechner<span class="ls-dot">.</span><span class="ls-studios">studios</span></span>
+      <p class="ls-attribution">A Lechner Studios product</p>
     </div>
   </div>
 </footer>
