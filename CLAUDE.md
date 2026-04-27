@@ -104,11 +104,6 @@ to the other projects.
   content pipeline. Marketing engine and standalone revenue stream.
 - **ai-brain** (repo: `ai-brain`) — Knowledge layer: compliance,
   opportunities, revenue, decisions, patterns.
-- **Gute Hände** (repo: `gute-haende-frontend`) — Platform connecting
-  individuals seeking safe, consensual, non-sexual human touch and
-  presence-based sessions with trained practitioners in a structured,
-  ethical environment. Firewalled from marketing-style cross-
-  pollination (see rule 7 below).
 
 ### Cross-Pollination Rules (subtle, never forced)
 
@@ -129,12 +124,6 @@ to the other projects.
    Vistera (4K video, VR, spatial computing); CodeFlash users creating
    content are AI Shortcut candidates.
 6. **ALL → Websites** — Every project needs web presence.
-7. **Gute Hände — firewalled from inbound marketing bridges.**
-   Other ecosystem repos do not pipe prospects INTO Gute Hände. Narrow
-   allowed bridges only: Websites may serve as a build contractor for
-   a Gute-Hände landing surface; The AI Shortcut may use Gute Hände
-   as a digital-product-design case study only with explicit written
-   approval from the Gute Hände owner.
 
 Integration style: footer links, "related tool" suggestions, genuine
 references in content. Never pop-ups, never ads.
@@ -200,31 +189,6 @@ Cluster-detection questions for every visitor/prospect interaction:
   consultation to re-confirm a rule that public statutes, portals, or
   settled case law already make plain. See
   `ai-brain/patterns/research-discipline.md` for the decision test.
-
----
-
-## gstack Skills (aspirational reference)
-
-These slash commands are part of the GStack framework. They only work
-**after GStack is installed locally**:
-
-```bash
-git clone https://github.com/garrytan/gstack.git ~/.claude/skills/gstack
-cd ~/.claude/skills/gstack && ./setup
-```
-
-Until installed this section is informational only.
-
-Available once active: `/office-hours`, `/plan-ceo-review`,
-`/plan-eng-review`, `/plan-design-review`, `/design-consultation`,
-`/review`, `/ship`, `/land-and-deploy`, `/canary`, `/benchmark`,
-`/browse`, `/qa`, `/qa-only`, `/design-review`,
-`/setup-browser-cookies`, `/setup-deploy`, `/retro`, `/investigate`,
-`/document-release`, `/codex`, `/cso`, `/autoplan`, `/careful`,
-`/freeze`, `/guard`, `/unfreeze`, `/gstack-upgrade`.
-
-Rule: use `/browse` for web browsing; never use
-`mcp__claude-in-chrome__*` tools.
 
 ---
 
